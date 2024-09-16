@@ -23,3 +23,6 @@ developer = BroMandarin
 cssfile = /builtins/manifests/web/dark_theme.css
 scale_mode = fit
 
+[label]
+subpixels = 0
+
