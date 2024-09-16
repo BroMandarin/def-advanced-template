@@ -26,3 +26,6 @@ scale_mode = fit
 [label]
 subpixels = 0
 
+[sprite]
+subpixels = 0
+
