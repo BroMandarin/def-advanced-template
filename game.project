@@ -33,3 +33,7 @@ subpixels = 0
 default_texture_min_filter = nearest
 default_texture_mag_filter = nearest
 
+[input]
+game_binding = /builtins/input/all.input_bindingc
+use_accelerometer = 0
+
