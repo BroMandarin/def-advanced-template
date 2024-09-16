@@ -16,11 +16,11 @@ local function process_input(self, action_id, action)
 	
 	if action_id == hash("key_up") then
 		print("up")
-		local prev, new = list_menu.select(list_menu.selected_id - 1)
+		local prev, new = list_menu.select_in_direction(-1)
 		
 		mark_selected(prev, new)
 	elseif action_id == hash("key_down") then
-		local prev, new = list_menu.select(list_menu.selected_id + 1)
+		local prev, new = list_menu.select_in_direction(1)
 
 		mark_selected(prev, new)
 	end
