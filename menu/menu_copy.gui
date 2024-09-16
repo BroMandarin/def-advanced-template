@@ -1,6 +1,6 @@
 script: "/menu/menu.gui_script"
 fonts {
-  name: "press_start_8"
+  name: "shadow"
   font: "/assets/font/press_start_8.font"
 }
 textures {
@@ -39,7 +39,6 @@ nodes {
   parent: "root"
   inherit_alpha: true
   size_mode: SIZE_MODE_AUTO
-  visible: false
 }
 nodes {
   position {
@@ -51,7 +50,7 @@ nodes {
   }
   type: TYPE_TEXT
   text: "START"
-  font: "press_start_8"
+  font: "shadow"
   id: "start"
   shadow {
     z: 1.0
@@ -69,7 +68,7 @@ nodes {
   }
   type: TYPE_TEXT
   text: "CONTROLS"
-  font: "press_start_8"
+  font: "shadow"
   id: "controls"
   shadow {
     z: 1.0
@@ -87,7 +86,7 @@ nodes {
   }
   type: TYPE_TEXT
   text: "CREDITS"
-  font: "press_start_8"
+  font: "shadow"
   id: "credits"
   shadow {
     z: 1.0

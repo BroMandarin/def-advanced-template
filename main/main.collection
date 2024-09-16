@@ -4,3 +4,11 @@ instances {
   prototype: "/core/camera/camera.go"
 }
 scale_along_z: 0
+embedded_instances {
+  id: "gui"
+  data: "components {\n"
+  "  id: \"menu\"\n"
+  "  component: \"/menu/menu.gui\"\n"
+  "}\n"
+  ""
+}
