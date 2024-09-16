@@ -19,3 +19,7 @@ title = Advanced Template
 version = 0.0
 developer = BroMandarin
 
+[html5]
+cssfile = /builtins/manifests/web/dark_theme.css
+scale_mode = fit
+
