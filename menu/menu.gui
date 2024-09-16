@@ -52,7 +52,7 @@ nodes {
   type: TYPE_TEXT
   text: "START"
   font: "press_start_8"
-  id: "start"
+  id: "element_1"
   shadow {
     z: 1.0
   }
@@ -70,7 +70,7 @@ nodes {
   type: TYPE_TEXT
   text: "CONTROLS"
   font: "press_start_8"
-  id: "controls"
+  id: "element_2"
   shadow {
     z: 1.0
   }
@@ -88,7 +88,7 @@ nodes {
   type: TYPE_TEXT
   text: "CREDITS"
   font: "press_start_8"
-  id: "credits"
+  id: "element_3"
   shadow {
     z: 1.0
   }

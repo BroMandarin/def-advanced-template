@@ -2,10 +2,28 @@ local list_menu = require("menu.list_menu")
 
 function init(self)
 	msg.post(".", "acquire_input_focus")
+	
+	list_menu.get_elements(3)
+end
+
+local function mark_selected(prev_id, new_id)
+	gui.set_color(list_menu.elements[prev_id], vmath.vector3(1, 1, 1, 1))
+	gui.set_color(list_menu.elements[new_id], vmath.vector3(1, 0, 0, 1))
 end
 
 local function process_input(self, action_id, action)
 	if not action.pressed then return end
+	
+	if action_id == hash("key_up") then
+		print("up")
+		local prev, new = list_menu.select(list_menu.selected_id - 1)
+		
+		mark_selected(prev, new)
+	elseif action_id == hash("key_down") then
+		local prev, new = list_menu.select(list_menu.selected_id + 1)
+
+		mark_selected(prev, new)
+	end
 end
 
 function on_message(self, message_id, message, sender)

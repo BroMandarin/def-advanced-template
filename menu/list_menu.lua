@@ -18,7 +18,11 @@ function list_menu.select(id)
 		id = list_menu.elements.n
 	end
 	
-	selected_id = id
+	local prev_id = list_menu.selected_id
+
+	list_menu.selected_id = id
+	
+	return prev_id, id
 end
 
 return list_menu
