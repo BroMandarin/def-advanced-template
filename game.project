@@ -10,6 +10,9 @@ height = 640
 
 [android]
 input_method = HiddenInputField
+package = com.bromandarin.todo
+immersive_mode = 1
+display_cutout = 0
 
 [project]
 title = Advanced Template
