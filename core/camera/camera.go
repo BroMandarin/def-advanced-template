@@ -1,6 +1,6 @@
 components {
   id: "script"
-  component: "/game/core/camera/camera.script"
+  component: "/core/camera/camera.script"
 }
 embedded_components {
   id: "camera"

@@ -1,2 +1,6 @@
 name: "main"
+instances {
+  id: "camera"
+  prototype: "/core/camera/camera.go"
+}
 scale_along_z: 0
