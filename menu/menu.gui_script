@@ -1,14 +1,15 @@
 local list_menu = require("menu.list_menu")
 
+local function mark_selected(prev_id, new_id)
+	gui.set_color(list_menu.elements[prev_id], vmath.vector3(1, 1, 1, 1))
+	gui.set_color(list_menu.elements[new_id], vmath.vector3(1, 0, 0, 1))
+end
+
 function init(self)
 	msg.post(".", "acquire_input_focus")
 	
 	list_menu.get_elements(3)
-end
-
-local function mark_selected(prev_id, new_id)
-	gui.set_color(list_menu.elements[prev_id], vmath.vector3(1, 1, 1, 1))
-	gui.set_color(list_menu.elements[new_id], vmath.vector3(1, 0, 0, 1))
+	mark_selected(list_menu.select(1))
 end
 
 local function process_input(self, action_id, action)
