@@ -4,6 +4,8 @@ list_menu.elements = {}
 list_menu.selected_id = 1
 
 function list_menu.get_elements(n)
+	list_menu.elements = {}
+
 	for e = 1, n do
 		list_menu.elements[e] = gui.get_node("element_" .. e)
 	end
