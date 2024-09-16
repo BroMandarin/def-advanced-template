@@ -1,7 +1,7 @@
 local list_menu = {}
 
 list_menu.elements = {}
-lisst_menu.selected_id = 1
+list_menu.selected_id = 1
 
 function list_menu.get_elements(n)
 	for e = 1, n do
