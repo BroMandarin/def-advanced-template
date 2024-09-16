@@ -15,7 +15,6 @@ local function process_input(self, action_id, action)
 	if not action.pressed then return end
 	
 	if action_id == hash("key_up") then
-		print("up")
 		local prev, new = list_menu.select_in_direction(-1)
 		
 		mark_selected(prev, new)
