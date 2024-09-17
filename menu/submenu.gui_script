@@ -1,4 +1,4 @@
-local hashes = require("game.core.hashes")
+local hashes = require("core.hashes")
 
 local function show(self)
 	gui.set_enabled(self.root, true)
@@ -22,7 +22,7 @@ local function process_input(self, action_id, action)
 	if action_id == hashes.ACTION or action_id == hashes.EXIT then
 		hide(self)
 		msg.post("#menu", "show")
-		sound.play("main:/sound#beep")
+		-- sound.play("main:/sound#beep")
 	end
 end
 

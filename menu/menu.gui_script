@@ -5,26 +5,63 @@ local function mark_selected(self, prev_id, new_id)
 	gui.set_color(self.elements[new_id], vmath.vector3(1, 0, 0, 1))
 end
 
+local function show(self)
+	gui.set_enabled(self.root, true)
+
+	for e = 1, #self.elements do
+		if e == self.elements.selected_id then
+			gui.set_color(self.elements[e], vmath.vector3(1, 0, 0, 1))
+		else
+			gui.set_color(self.elements[e], vmath.vector3(1, 1, 1, 1))
+		end
+	end
+
+	self.enabled = true
+end
+
+local function hide(self)
+	gui.set_enabled(self.root, false)
+	self.enabled = false
+end
+
+local function choose_credits(self)
+	msg.post("#credits", "show")
+	hide(self)
+end
+
+local function choose(self, id)
+	if id == 3 then
+		choose_credits(self)
+	end
+end
+
 function init(self)
 	msg.post(".", "acquire_input_focus")
 
 	self.elements = list_menu.get_elements(3)
+	self.root = gui.get_node("root")
+	self.enabled = true
 	mark_selected(self, list_menu.select(self.elements, 1))
 end
 
 local function process_input(self, action_id, action)
 	if not action.pressed then return end
+	if not self.enabled then return end
 
 	if action_id == hash("key_up") then
 		mark_selected(self, list_menu.select_in_direction(self.elements, -1))
 	elseif action_id == hash("key_down") then
 		mark_selected(self, list_menu.select_in_direction(self.elements, 1))
+	elseif action_id == hash("key_enter") then
+		choose(self, self.elements.selected_id)
 	end
 end
 
 function on_message(self, message_id, message, sender)
 	if message_id == hash("on_input") then
 		process_input(self, message.action_id, message.action)
+	elseif message_id == hash("show") then
+		show(self)
 	end
 end
 
