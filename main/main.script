@@ -1,0 +1,3 @@
+function init(self)
+	msg.post("/scenes#loader", "load_menu")
+end
