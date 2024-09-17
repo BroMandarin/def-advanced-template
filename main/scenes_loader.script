@@ -18,7 +18,6 @@ function on_message(self, message_id, message, sender)
 		msg.post(sender, "enable")
 		msg.post(sender, "acquire_input_focus")
 	elseif message_id == hash("on_input") then
-		print("@2", message_id, message.action_id)
 		print(loaded)
 		msg.post(loaded_scene_name, "on_input", message)
 	elseif message_id == hash("load_menu") then
