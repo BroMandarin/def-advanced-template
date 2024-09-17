@@ -7,22 +7,18 @@ end
 
 function init(self)
 	msg.post(".", "acquire_input_focus")
-	
+
 	list_menu.get_elements(3)
 	mark_selected(list_menu.select(1))
 end
 
 local function process_input(self, action_id, action)
 	if not action.pressed then return end
-	
-	if action_id == hash("key_up") then
-		local prev, new = list_menu.select_in_direction(-1)
-		
-		mark_selected(prev, new)
-	elseif action_id == hash("key_down") then
-		local prev, new = list_menu.select_in_direction(1)
 
-		mark_selected(prev, new)
+	if action_id == hash("key_up") then
+		mark_selected(list_menu.select_in_direction(-1))
+	elseif action_id == hash("key_down") then
+		mark_selected(list_menu.select_in_direction(1))
 	end
 end
 

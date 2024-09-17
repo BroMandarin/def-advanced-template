@@ -1,0 +1,45 @@
+local up_n, down_n, left_n, right_n, a_n, b_n
+
+local function get_nodes(self)
+	up_n = gui.get_node("up")
+	down_n = gui.get_node("down")
+	left_n = gui.get_node("left")
+	right_n = gui.get_node("right")
+	a_n = gui.get_node("a")
+	b_n = gui.get_node("b")
+
+	-- TODO: make hash
+	self.nodes = {
+		{ up_n,    "key_up" },
+		{ down_n,  "key_down" },
+		{ left_n,  "key_left" },
+		{ right_n, "key_right" },
+		{ a_n,     "key_enter" },
+		{ b_n,     "key_z" },
+	}
+end
+
+function init(self)
+	msg.post(".", "acquire_input_focus")
+	
+	gui.set_render_order(15)
+
+	get_nodes(self)
+end
+
+function on_input(self, action_id, action)
+	if not action.pressed then return end
+	if action_id ~= hash("touch") then return end
+
+	for n = 1, #self.nodes do
+		if gui.pick_node(self.nodes[n][1], action.x, action.y) then
+			local trigger = hash(self.nodes[n][2])
+
+			msg.post("main:/scenes#loader", "on_input",
+				{
+					action_id = trigger,
+					action = action
+				})
+		end
+	end
+end

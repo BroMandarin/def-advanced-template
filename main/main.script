@@ -1,3 +1,9 @@
+local dbg = require("core.dbg")
+
 function init(self)
 	msg.post("/scenes#loader", "load_menu")
+	
+	if dbg.enable_input_overlay then
+		msg.post("/scenes#loader", "load_input_overlay")
+	end
 end
