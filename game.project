@@ -10,7 +10,7 @@ height = 180
 
 [android]
 input_method = HiddenInputField
-package = com.bromandarin.todo
+package = com.bromandarin.advanced_template
 immersive_mode = 1
 display_cutout = 0
 
