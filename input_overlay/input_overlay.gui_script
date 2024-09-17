@@ -8,6 +8,7 @@ local function get_nodes(self)
 	a_n = gui.get_node("a")
 	b_n = gui.get_node("b")
 
+	-- TODO: make hash
 	self.nodes = {
 		{ up_n,    "key_up" },
 		{ down_n,  "key_down" },

@@ -10,6 +10,7 @@ nodes {
   }
   type: TYPE_BOX
   id: "root"
+  adjust_mode: ADJUST_MODE_STRETCH
   inherit_alpha: true
   size_mode: SIZE_MODE_AUTO
   visible: false
@@ -26,6 +27,7 @@ nodes {
   type: TYPE_BOX
   texture: "overlay_icons/lineLight02"
   id: "dpad"
+  xanchor: XANCHOR_LEFT
   parent: "root"
   inherit_alpha: true
   size_mode: SIZE_MODE_AUTO
@@ -92,8 +94,24 @@ nodes {
 }
 nodes {
   position {
-    x: 288.0
+    x: 264.0
     y: 44.0
+  }
+  size {
+    x: 1.0
+    y: 1.0
+  }
+  type: TYPE_BOX
+  id: "buttons"
+  xanchor: XANCHOR_RIGHT
+  parent: "root"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+  visible: false
+}
+nodes {
+  position {
+    x: -24.0
   }
   scale {
     x: 0.5
@@ -102,14 +120,13 @@ nodes {
   type: TYPE_BOX
   texture: "overlay_icons/lineLight34"
   id: "a"
-  parent: "root"
+  parent: "buttons"
   inherit_alpha: true
   size_mode: SIZE_MODE_AUTO
 }
 nodes {
   position {
-    x: 240.0
-    y: 44.0
+    x: 24.0
   }
   scale {
     x: 0.5
@@ -118,7 +135,7 @@ nodes {
   type: TYPE_BOX
   texture: "overlay_icons/lineLight35"
   id: "b"
-  parent: "root"
+  parent: "buttons"
   inherit_alpha: true
   size_mode: SIZE_MODE_AUTO
 }
