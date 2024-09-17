@@ -1,3 +1,4 @@
+script: "/input_overlay/input_overlay.gui_script"
 textures {
   name: "overlay_icons"
   texture: "/input_overlay/overlay_icons.atlas"
