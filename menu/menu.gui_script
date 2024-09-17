@@ -1,24 +1,24 @@
 local list_menu = require("menu.list_menu")
 
-local function mark_selected(prev_id, new_id)
-	gui.set_color(list_menu.elements[prev_id], vmath.vector3(1, 1, 1, 1))
-	gui.set_color(list_menu.elements[new_id], vmath.vector3(1, 0, 0, 1))
+local function mark_selected(self, prev_id, new_id)
+	gui.set_color(self.elements[prev_id], vmath.vector3(1, 1, 1, 1))
+	gui.set_color(self.elements[new_id], vmath.vector3(1, 0, 0, 1))
 end
 
 function init(self)
 	msg.post(".", "acquire_input_focus")
 
-	list_menu.get_elements(3)
-	mark_selected(list_menu.select(1))
+	self.elements = list_menu.get_elements(3)
+	mark_selected(self, list_menu.select(self.elements, 1))
 end
 
 local function process_input(self, action_id, action)
 	if not action.pressed then return end
 
 	if action_id == hash("key_up") then
-		mark_selected(list_menu.select_in_direction(-1))
+		mark_selected(self, list_menu.select_in_direction(self.elements, -1))
 	elseif action_id == hash("key_down") then
-		mark_selected(list_menu.select_in_direction(1))
+		mark_selected(self, list_menu.select_in_direction(self.elements, 1))
 	end
 end
 
