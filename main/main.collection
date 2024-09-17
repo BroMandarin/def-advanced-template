@@ -5,10 +5,16 @@ instances {
 }
 scale_along_z: 0
 embedded_instances {
-  id: "gui"
+  id: "scenes"
   data: "components {\n"
-  "  id: \"menu\"\n"
-  "  component: \"/menu/menu.gui\"\n"
+  "  id: \"loader\"\n"
+  "  component: \"/main/scenes_loader.script\"\n"
+  "}\n"
+  "embedded_components {\n"
+  "  id: \"menu_proxy\"\n"
+  "  type: \"collectionproxy\"\n"
+  "  data: \"collection: \\\"/menu/menu.collection\\\"\\n"
+  "\"\n"
   "}\n"
   ""
 }

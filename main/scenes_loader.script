@@ -1,0 +1,24 @@
+local loaded = nil
+
+local function unload_loaded()
+	if loaded then
+		msg.post(loaded, "unload")
+	end
+end
+
+local function load_scene(url)
+	unload_loaded()
+	msg.post(url, "load")
+	loaded = url
+end
+
+function on_message(self, message_id, message, sender)
+	if message_id == hash("proxy_loaded") then
+		msg.post(sender, "enable")
+		msg.post(sender, "acquire_input_focus")
+	elseif message_id == hash("load_menu") then
+		load_scene("/scenes#menu_proxy")
+	elseif message_id == hash("load_game") then
+		load_scene("/scenes#game_proxy")
+	end
+end
