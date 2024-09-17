@@ -28,7 +28,7 @@ end
 
 function on_message(self, message_id, message, sender)
 	if message_id == hash("on_input") then
-		print("@3", message_id)
+		print("@3", message.action_id)
 		process_input(self, message.action_id, message.action)
 	end
 end
