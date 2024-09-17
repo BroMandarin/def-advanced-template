@@ -1,0 +1,10 @@
+images {
+  image: "/assets/png/lineLight02.png"
+}
+images {
+  image: "/assets/png/lineLight34.png"
+}
+images {
+  image: "/assets/png/lineLight35.png"
+}
+extrude_borders: 2
