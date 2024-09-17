@@ -3,10 +3,6 @@ instances {
   id: "camera"
   prototype: "/core/camera/camera.go"
 }
-collection_instances {
-  id: "input_overlay"
-  collection: "/input_overlay/input_overlay.collection"
-}
 scale_along_z: 0
 embedded_instances {
   id: "scenes"
@@ -27,6 +23,16 @@ embedded_instances {
   data: "components {\n"
   "  id: \"main\"\n"
   "  component: \"/main/main.script\"\n"
+  "}\n"
+  ""
+}
+embedded_instances {
+  id: "input_overlay"
+  data: "embedded_components {\n"
+  "  id: \"input_overlay_proxy\"\n"
+  "  type: \"collectionproxy\"\n"
+  "  data: \"collection: \\\"/input_overlay/input_overlay.collection\\\"\\n"
+  "\"\n"
   "}\n"
   ""
 }

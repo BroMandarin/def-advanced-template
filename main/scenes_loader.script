@@ -15,11 +15,15 @@ end
 
 function on_message(self, message_id, message, sender)
 	if message_id == hash("proxy_loaded") then
+		print("@2", sender)
 		msg.post(sender, "enable")
 		msg.post(sender, "acquire_input_focus")
 	elseif message_id == hash("on_input") then
 		print(loaded)
 		msg.post(loaded_scene_name, "on_input", message)
+	elseif message_id == hash("load_input_overlay") then
+		print("@1")
+		msg.post("/input_overlay#input_overlay_proxy", "load")
 	elseif message_id == hash("load_menu") then
 		load_scene("/scenes#menu_proxy")
 	elseif message_id == hash("load_game") then
