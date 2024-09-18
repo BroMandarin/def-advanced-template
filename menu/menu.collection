@@ -10,6 +10,10 @@ embedded_instances {
   "  id: \"credits\"\n"
   "  component: \"/menu/credits.gui\"\n"
   "}\n"
+  "components {\n"
+  "  id: \"settings\"\n"
+  "  component: \"/menu/settings.gui\"\n"
+  "}\n"
   ""
 }
 embedded_instances {
