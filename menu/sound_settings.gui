@@ -1,4 +1,4 @@
-script: "/menu/settings.gui_script"
+script: "/menu/sound_settings.gui_script"
 fonts {
   name: "press_start_8"
   font: "/assets/font/press_start_8.font"
