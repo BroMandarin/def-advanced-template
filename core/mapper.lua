@@ -51,4 +51,38 @@ function my_mapper.on_input(trigger)
 	return binding
 end
 
+function my_mapper.save_to_file()
+	pprint(my_mapper.action_to_trigger)
+	local file = sys.get_save_file("advanced_template", "input")
+	local table = {}
+
+	for k, v in ipairs(my_mapper.actions) do
+		print(k, v.event)
+		print(my_mapper.action_to_trigger[hash(v.event)])
+		table[v.event] = my_mapper.action_to_trigger[hash(v.event)]
+	end
+
+	sys.save(file, table)
+	pprint(table)
+end
+
+function my_mapper.load_from_file()
+	local file = sys.get_save_file("advanced_template", "input")
+	local table = {}
+	
+	if not sys.exists(file) then return end
+	
+	table = sys.load(file)
+	
+	pprint(table)
+	
+	for k, v in pairs(table) do
+		print(k, v)
+		my_mapper.bind(hash(k), v)
+		-- my_mapper.action_to_trigger[hash(k)] = v
+	end
+	
+	pprint(my_mapper.action_to_trigger)
+end
+
 return my_mapper
