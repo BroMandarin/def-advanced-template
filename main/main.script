@@ -12,4 +12,7 @@ function init(self)
 	
 	mapper.bind(hashes.UP, triggers.KEY_UP)
 	mapper.bind(hashes.DOWN, triggers.KEY_DOWN)
+	mapper.bind(hashes.LEFT, triggers.KEY_LEFT)
+	mapper.bind(hashes.RIGHT, triggers.KEY_RIGHT)
+	mapper.bind(hashes.ACTION, triggers.KEY_ENTER)
 end

@@ -67,7 +67,7 @@ local function process_input(self, action_id, action)
 		mark_selected(self, list_menu.select_in_direction(self.elements, -1))
 	elseif action_id == hashes.DOWN then
 		mark_selected(self, list_menu.select_in_direction(self.elements, 1))
-	elseif action_id == hash("key_enter") then
+	elseif action_id == hashes.ACTION then
 		choose(self, self.elements.selected_id)
 	end
 end
