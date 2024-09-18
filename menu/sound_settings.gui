@@ -56,7 +56,7 @@ nodes {
     y: 1.0
   }
   type: TYPE_BOX
-  id: "element_1"
+  id: "component_1"
   parent: "root"
   inherit_alpha: true
   size_mode: SIZE_MODE_AUTO
@@ -74,12 +74,12 @@ nodes {
   type: TYPE_TEXT
   text: "MUSIC"
   font: "press_start_8"
-  id: "left_1"
+  id: "element_1"
   pivot: PIVOT_W
   shadow {
     z: 1.0
   }
-  parent: "element_1"
+  parent: "component_1"
   inherit_alpha: true
 }
 nodes {
@@ -99,7 +99,7 @@ nodes {
   shadow {
     z: 1.0
   }
-  parent: "element_1"
+  parent: "component_1"
   inherit_alpha: true
 }
 nodes {
@@ -111,7 +111,7 @@ nodes {
     y: 1.0
   }
   type: TYPE_BOX
-  id: "element_2"
+  id: "component_2"
   parent: "root"
   inherit_alpha: true
   size_mode: SIZE_MODE_AUTO
@@ -129,12 +129,12 @@ nodes {
   type: TYPE_TEXT
   text: "EFFECTS"
   font: "press_start_8"
-  id: "left_2"
+  id: "element_2"
   pivot: PIVOT_W
   shadow {
     z: 1.0
   }
-  parent: "element_2"
+  parent: "component_2"
   inherit_alpha: true
 }
 nodes {
@@ -154,27 +154,12 @@ nodes {
   shadow {
     z: 1.0
   }
-  parent: "element_2"
+  parent: "component_2"
   inherit_alpha: true
 }
 nodes {
   position {
-    y: -32.0
-  }
-  size {
-    x: 1.0
-    y: 1.0
-  }
-  type: TYPE_BOX
-  id: "element_3"
-  parent: "root"
-  inherit_alpha: true
-  size_mode: SIZE_MODE_AUTO
-  visible: false
-}
-nodes {
-  position {
-    y: -5.0
+    y: -37.0
   }
   size {
     x: 128.0
@@ -184,11 +169,11 @@ nodes {
   text: "BACK\n"
   ""
   font: "press_start_8"
-  id: "left_3"
+  id: "element_3"
   shadow {
     z: 1.0
   }
-  parent: "element_3"
+  parent: "root"
   inherit_alpha: true
 }
 material: "/builtins/materials/gui.material"

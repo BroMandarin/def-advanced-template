@@ -26,8 +26,8 @@ local function hide(self)
 	self.elements.selected_id = 1
 end
 
-local function choose_sound_settings(self)
-	msg.post("#sound_settings", "show")
+local function choose_settings(self)
+	msg.post("#settings", "show")
 	hide(self)
 end
 
@@ -38,12 +38,12 @@ end
 
 local function choose_back(self)
 	hide(self)
-	msg.post("#menu", "show")
+	msg.post("#settings", "show")
 end
 
 local function choose(self, id)
-	if id == 1 then
-		choose_sound_settings(self)
+	if id == 2 then
+		choose_settings(self)
 	elseif id == 3 then
 		choose_back(self)
 	end
