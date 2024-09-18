@@ -5,7 +5,7 @@ hashes.DOWN = hash("down")
 hashes.LEFT = hash("left")
 hashes.RIGHT = hash("right")
 -- hashes.ACTION = hash("action")
-hashes.ACTION = hash("key_enter")
+hashes.ACTION = hash("accept")
 hashes.EXIT = hash("exit")
 hashes.DEBUG = hash("debug")
 
