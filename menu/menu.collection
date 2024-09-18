@@ -18,6 +18,10 @@ embedded_instances {
   "  id: \"sound_settings\"\n"
   "  component: \"/menu/sound_settings.gui\"\n"
   "}\n"
+  "components {\n"
+  "  id: \"input_settings\"\n"
+  "  component: \"/menu/input_settings.gui\"\n"
+  "}\n"
   ""
 }
 embedded_instances {

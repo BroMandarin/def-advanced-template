@@ -1,0 +1,109 @@
+script: "/menu/settings.gui_script"
+fonts {
+  name: "press_start_8"
+  font: "/assets/font/press_start_8.font"
+}
+textures {
+  name: "menu"
+  texture: "/blockout/grids.atlas"
+}
+nodes {
+  position {
+    x: 160.0
+    y: 90.0
+  }
+  size {
+    x: 1.0
+    y: 1.0
+  }
+  type: TYPE_BOX
+  id: "root"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+  visible: false
+}
+nodes {
+  type: TYPE_BOX
+  texture: "menu/checkers"
+  id: "box"
+  parent: "root"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    y: 72.0
+  }
+  size {
+    x: 128.0
+    y: 8.0
+  }
+  type: TYPE_TEXT
+  text: "- INPUT SETTINGS -"
+  font: "press_start_8"
+  id: "header"
+  pivot: PIVOT_N
+  shadow {
+    z: 1.0
+  }
+  parent: "root"
+  inherit_alpha: true
+  shadow_alpha: 0.0
+}
+nodes {
+  position {
+    y: -5.0
+  }
+  size {
+    x: 128.0
+    y: 8.0
+  }
+  type: TYPE_TEXT
+  text: "SOUND"
+  font: "press_start_8"
+  id: "element_1"
+  shadow {
+    z: 1.0
+  }
+  parent: "root"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    y: -21.0
+  }
+  size {
+    x: 128.0
+    y: 8.0
+  }
+  type: TYPE_TEXT
+  text: "INPUT"
+  font: "press_start_8"
+  id: "element_2"
+  shadow {
+    z: 1.0
+  }
+  parent: "root"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    y: -37.0
+  }
+  size {
+    x: 128.0
+    y: 8.0
+  }
+  type: TYPE_TEXT
+  text: "BACK\n"
+  ""
+  font: "press_start_8"
+  id: "element_3"
+  shadow {
+    z: 1.0
+  }
+  parent: "root"
+  inherit_alpha: true
+}
+material: "/builtins/materials/gui.material"
+adjust_reference: ADJUST_REFERENCE_PARENT
