@@ -1,5 +1,5 @@
 local loaded = nil
-local loaded_scene_name = "menu:/gui#menu"
+local loaded_scene_name = "menu:/menu#script"
 
 local function unload_loaded()
 	if loaded then
