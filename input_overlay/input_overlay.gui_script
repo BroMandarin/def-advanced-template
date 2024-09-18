@@ -35,7 +35,7 @@ function on_input(self, action_id, action)
 		if gui.pick_node(self.nodes[n][1], action.x, action.y) then
 			local trigger = hash(self.nodes[n][2])
 
-			msg.post("main:/scenes#loader", "on_input",
+			msg.post("main:/scenes#input", "on_input",
 				{
 					action_id = trigger,
 					action = action

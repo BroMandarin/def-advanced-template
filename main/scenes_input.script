@@ -1,0 +1,10 @@
+local loaded = nil
+local loaded_scene_name = "menu:/menu#script"
+
+function on_message(self, message_id, message, sender)
+	if message_id == hash("on_input") then
+		msg.post(loaded_scene_name, "on_input", message)
+	elseif message_id == hash("set_loaded") then
+		loaded = message.loaded
+	end
+end
