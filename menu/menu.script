@@ -1,5 +1,6 @@
 function on_message(self, message_id, message, sender)
 	if message_id == hash("on_input") then
 		msg.post("/gui#menu", message_id, message)
+		msg.post("/gui#credits", message_id, message)
 	end
 end
