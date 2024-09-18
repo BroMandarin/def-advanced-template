@@ -1,4 +1,7 @@
 local dbg = require("core.dbg")
+local mapper = require("core.mapper")
+local triggers = require("core.triggers")
+local hashes = require("core.hashes")
 
 function init(self)
 	msg.post("/scenes#loader", "load_menu")
@@ -6,4 +9,7 @@ function init(self)
 	if dbg.enable_input_overlay then
 		msg.post("/scenes#loader", "load_input_overlay")
 	end
+	
+	mapper.bind(hashes.UP, triggers.KEY_UP)
+	mapper.bind(hashes.DOWN, triggers.KEY_DOWN)
 end
