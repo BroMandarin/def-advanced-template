@@ -1,10 +1,10 @@
-script: "/menu/menu.gui_script"
+script: "/menu/settings.gui_script"
 fonts {
-  name: "shadow"
+  name: "press_start_8"
   font: "/assets/font/press_start_8.font"
 }
 textures {
-  name: "grids"
+  name: "menu"
   texture: "/blockout/grids.atlas"
 }
 nodes {
@@ -24,7 +24,7 @@ nodes {
 }
 nodes {
   type: TYPE_BOX
-  texture: "grids/checkers"
+  texture: "menu/checkers"
   id: "box"
   parent: "root"
   inherit_alpha: true
@@ -32,13 +32,23 @@ nodes {
 }
 nodes {
   position {
-    y: 40.0
+    y: 72.0
   }
-  type: TYPE_BOX
-  id: "logo"
+  size {
+    x: 128.0
+    y: 8.0
+  }
+  type: TYPE_TEXT
+  text: "- SETTINGS -"
+  font: "press_start_8"
+  id: "header"
+  pivot: PIVOT_N
+  shadow {
+    z: 1.0
+  }
   parent: "root"
   inherit_alpha: true
-  size_mode: SIZE_MODE_AUTO
+  shadow_alpha: 0.0
 }
 nodes {
   position {
@@ -49,9 +59,9 @@ nodes {
     y: 8.0
   }
   type: TYPE_TEXT
-  text: "START"
-  font: "shadow"
-  id: "start"
+  text: "SOUND"
+  font: "press_start_8"
+  id: "element_1"
   shadow {
     z: 1.0
   }
@@ -67,9 +77,9 @@ nodes {
     y: 8.0
   }
   type: TYPE_TEXT
-  text: "CONTROLS"
-  font: "shadow"
-  id: "controls"
+  text: "INPUT"
+  font: "press_start_8"
+  id: "element_2"
   shadow {
     z: 1.0
   }
@@ -85,9 +95,10 @@ nodes {
     y: 8.0
   }
   type: TYPE_TEXT
-  text: "CREDITS"
-  font: "shadow"
-  id: "credits"
+  text: "BACK\n"
+  ""
+  font: "press_start_8"
+  id: "element_3"
   shadow {
     z: 1.0
   }

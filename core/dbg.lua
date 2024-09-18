@@ -1,5 +1,5 @@
 local dbg = {}
 
-dbg.enable_input_overlay = false
+dbg.enable_input_overlay = true
 
 return dbg

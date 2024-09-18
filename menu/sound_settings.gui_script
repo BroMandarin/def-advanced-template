@@ -1,5 +1,9 @@
 local list_menu = require("menu.list_menu")
 
+local master = 50
+local music = 50
+local effects = 50
+
 local function mark_selected(self, prev_id, new_id)
 	gui.set_color(self.elements[prev_id], vmath.vector3(1, 1, 1, 1))
 	gui.set_color(self.elements[new_id], vmath.vector3(1, 0, 0, 1))
@@ -20,8 +24,10 @@ local function show(self)
 end
 
 local function hide(self)
+	gui.set_color(self.elements[self.elements.selected_id], vmath.vector3(1, 1, 1, 1))
 	gui.set_enabled(self.root, false)
 	self.enabled = false
+	self.elements.selected_id = 1
 end
 
 local function choose_settings(self)
@@ -34,12 +40,46 @@ local function choose_credits(self)
 	hide(self)
 end
 
+local function choose_back(self)
+	hide(self)
+	msg.post("#settings", "show")
+end
+
 local function choose(self, id)
 	if id == 2 then
 		choose_settings(self)
 	elseif id == 3 then
-		choose_credits(self)
+		choose_back(self)
 	end
+end
+
+local function draw_component(self)
+	local node = gui.get_node("right_" .. self.elements.selected_id)
+
+	if self.elements.selected_id == 1 then
+		gui.set_text(node, music .. "%")
+	elseif self.elements.selected_id == 2 then
+		gui.set_text(node, effects .. "%")
+	end
+end
+
+local function modify(self, amount)
+	if self.elements.selected_id == 3 then return end
+
+	local variable = self.elements.selected_id == 1 and music or effects
+
+	variable = variable + (amount * 10)
+
+	variable = variable < 0 and 0 or variable
+	variable = variable > 100 and 100 or variable
+
+	if self.elements.selected_id == 1 then
+		music = variable
+	elseif self.elements.selected_id == 2 then
+		effects = variable
+	end
+
+	draw_component(self)
 end
 
 function init(self)
@@ -47,8 +87,9 @@ function init(self)
 
 	self.elements = list_menu.get_elements(3)
 	self.root = gui.get_node("root")
-	self.enabled = true
+	self.enabled = false
 	mark_selected(self, list_menu.select(self.elements, 1))
+	hide(self)
 end
 
 local function process_input(self, action_id, action)
@@ -59,6 +100,10 @@ local function process_input(self, action_id, action)
 		mark_selected(self, list_menu.select_in_direction(self.elements, -1))
 	elseif action_id == hash("key_down") then
 		mark_selected(self, list_menu.select_in_direction(self.elements, 1))
+	elseif action_id == hash("key_left") then
+		modify(self, -1)
+	elseif action_id == hash("key_right") then
+		modify(self, 1)
 	elseif action_id == hash("key_enter") then
 		choose(self, self.elements.selected_id)
 	end

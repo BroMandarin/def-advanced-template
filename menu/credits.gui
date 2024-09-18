@@ -1,17 +1,13 @@
-script: "/menu/menu.gui_script"
+script: "/menu/submenu.gui_script"
 fonts {
   name: "press_start_8"
   font: "/assets/font/press_start_8.font"
 }
 textures {
-  name: "grids"
+  name: "menu"
   texture: "/blockout/grids.atlas"
 }
 nodes {
-  position {
-    x: 160.0
-    y: 90.0
-  }
   size {
     x: 1.0
     y: 1.0
@@ -23,19 +19,13 @@ nodes {
   visible: false
 }
 nodes {
-  type: TYPE_BOX
-  texture: "grids/checkers"
-  id: "box"
-  parent: "root"
-  inherit_alpha: true
-  size_mode: SIZE_MODE_AUTO
-}
-nodes {
   position {
-    y: 40.0
+    x: 160.0
+    y: 90.0
   }
   type: TYPE_BOX
-  id: "logo"
+  texture: "menu/checkers"
+  id: "box"
   parent: "root"
   inherit_alpha: true
   size_mode: SIZE_MODE_AUTO
@@ -43,52 +33,90 @@ nodes {
 }
 nodes {
   position {
-    y: -5.0
+    x: 160.0
+    y: 158.0
   }
   size {
     x: 128.0
     y: 8.0
   }
   type: TYPE_TEXT
-  text: "START"
+  text: "- CREDITS -"
   font: "press_start_8"
-  id: "element_1"
+  id: "header"
   shadow {
     z: 1.0
   }
   parent: "root"
   inherit_alpha: true
+  shadow_alpha: 0.0
 }
 nodes {
   position {
-    y: -21.0
+    x: 96.0
+    y: 94.0
   }
   size {
-    x: 128.0
+    x: 160.0
     y: 8.0
   }
-  type: TYPE_TEXT
-  text: "SETTINGS"
-  font: "press_start_8"
-  id: "element_2"
-  shadow {
-    z: 1.0
+  color {
+    x: 0.698
+    y: 0.063
+    z: 0.188
   }
+  type: TYPE_TEXT
+  text: "MADE BY\n"
+  "\n"
+  "\n"
+  "MADE WITH\n"
+  "\n"
+  "\n"
+  "MADE FOR"
+  font: "press_start_8"
+  id: "text_a"
+  pivot: PIVOT_W
   parent: "root"
   inherit_alpha: true
 }
 nodes {
   position {
-    y: -37.0
+    x: 224.0
+    y: 94.0
+  }
+  size {
+    x: 160.0
+    y: 8.0
+  }
+  type: TYPE_TEXT
+  text: "\n"
+  "\n"
+  "BroMandarin\n"
+  "\n"
+  "\n"
+  "Defold\n"
+  "\n"
+  "\n"
+  "Defold Jam 2024"
+  font: "press_start_8"
+  id: "text_b"
+  pivot: PIVOT_E
+  parent: "root"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 160.0
+    y: 22.0
   }
   size {
     x: 128.0
     y: 8.0
   }
   type: TYPE_TEXT
-  text: "CREDITS"
+  text: "BACK"
   font: "press_start_8"
-  id: "element_3"
+  id: "back"
   shadow {
     z: 1.0
   }

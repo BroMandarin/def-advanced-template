@@ -118,8 +118,8 @@ nodes {
     y: 0.5
   }
   type: TYPE_BOX
-  texture: "overlay_icons/lineLight34"
-  id: "a"
+  texture: "overlay_icons/lineLight35"
+  id: "b"
   parent: "buttons"
   inherit_alpha: true
   size_mode: SIZE_MODE_AUTO
@@ -133,8 +133,8 @@ nodes {
     y: 0.5
   }
   type: TYPE_BOX
-  texture: "overlay_icons/lineLight35"
-  id: "b"
+  texture: "overlay_icons/lineLight34"
+  id: "a"
   parent: "buttons"
   inherit_alpha: true
   size_mode: SIZE_MODE_AUTO

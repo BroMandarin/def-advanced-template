@@ -20,12 +20,14 @@ local function show(self)
 end
 
 local function hide(self)
+	gui.set_color(self.elements[self.elements.selected_id], vmath.vector3(1, 1, 1, 1))
 	gui.set_enabled(self.root, false)
 	self.enabled = false
+	self.elements.selected_id = 1
 end
 
-local function choose_settings(self)
-	msg.post("#settings", "show")
+local function choose_sound_settings(self)
+	msg.post("#sound_settings", "show")
 	hide(self)
 end
 
@@ -34,11 +36,16 @@ local function choose_credits(self)
 	hide(self)
 end
 
+local function choose_back(self)
+	hide(self)
+	msg.post("#menu", "show")
+end
+
 local function choose(self, id)
-	if id == 2 then
-		choose_settings(self)
+	if id == 1 then
+		choose_sound_settings(self)
 	elseif id == 3 then
-		choose_credits(self)
+		choose_back(self)
 	end
 end
 
@@ -47,8 +54,9 @@ function init(self)
 
 	self.elements = list_menu.get_elements(3)
 	self.root = gui.get_node("root")
-	self.enabled = true
+	self.enabled = false
 	mark_selected(self, list_menu.select(self.elements, 1))
+	hide(self)
 end
 
 local function process_input(self, action_id, action)
