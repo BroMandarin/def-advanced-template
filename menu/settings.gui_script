@@ -1,4 +1,6 @@
 local list_menu = require("menu.list_menu")
+local hashes = require("core.hashes")
+local mapper = require("core.mapper")
 
 local function mark_selected(self, prev_id, new_id)
 	gui.set_color(self.elements[prev_id], vmath.vector3(1, 1, 1, 1))
@@ -63,12 +65,14 @@ local function process_input(self, action_id, action)
 	if not action.pressed then return end
 	if not self.enabled then return end
 
-	if action_id == hash("key_up") then
+	if action_id == hashes.UP then
 		mark_selected(self, list_menu.select_in_direction(self.elements, -1))
-	elseif action_id == hash("key_down") then
+	elseif action_id == hashes.DOWN then
 		mark_selected(self, list_menu.select_in_direction(self.elements, 1))
-	elseif action_id == hash("key_enter") then
+	elseif action_id == hashes.ACTION then
 		choose(self, self.elements.selected_id)
+	elseif action_id == hashes.CANCEL then
+		choose_back(self)
 	end
 end
 
@@ -81,5 +85,6 @@ function on_message(self, message_id, message, sender)
 end
 
 function on_input(self, action_id, action)
+	local action_id = mapper.on_input(action_id)
 	msg.post("#", "on_input", { action_id = action_id, action = action })
 end
