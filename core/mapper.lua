@@ -3,13 +3,20 @@ local my_mapper = {}
 my_mapper.action_to_trigger = {}
 my_mapper.trigger_to_action = {}
 my_mapper.actions = {
-	{ event = "up", name = "Up" },
-	{ event = "down", name = "Down" },
-	{ event = "left", name = "Left" },
-	{ event = "right", name = "Right" },
-	-- TODO: rename
-	{ event = "action", name = "Accept" },
-	{ event = "cancel", name = "Cancel" }
+	{ event = "menu_up",     name = "Up" },
+	{ event = "menu_down",   name = "Down" },
+	{ event = "menu_left",   name = "Left" },
+	{ event = "menu_right",  name = "Right" },
+
+	{ event = "accept", name = "Accept" },
+	{ event = "cancel", name = "Cancel" },
+
+	{ event = "up",     name = "Up" },
+	{ event = "down",   name = "Down" },
+	{ event = "left",   name = "Left" },
+	{ event = "right",  name = "Right" },
+	
+	{ event = "action", name = "Action" },
 }
 
 local function unbind(trigger)
