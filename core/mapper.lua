@@ -3,31 +3,13 @@ local my_mapper = {}
 my_mapper.action_to_trigger = {}
 my_mapper.trigger_to_action = {}
 my_mapper.actions = {
-	{
-		event = "up",
-		name = "Up"
-	},
-	{
-		event = "down",
-		name = "Down"
-	},
-	{
-		event = "left",
-		name = "Left"
-	},
-	{
-		event = "right",
-		name = "Right"
-	},
-	{
-		-- TODO: rename
-		event = "action",
-		name = "Accept"
-	},
-	{
-		event = "cancel",
-		name = "Cancel"
-	}
+	{ event = "up", name = "Up" },
+	{ event = "down", name = "Down" },
+	{ event = "left", name = "Left" },
+	{ event = "right", name = "Right" },
+	-- TODO: rename
+	{ event = "action", name = "Accept" },
+	{ event = "cancel", name = "Cancel" }
 }
 
 local function unbind(trigger)
@@ -70,19 +52,19 @@ end
 function my_mapper.load_from_file()
 	local file = sys.get_save_file("advanced_template", "input")
 	local table = {}
-	
+
 	if not sys.exists(file) then return end
-	
+
 	table = sys.load(file)
-	
+
 	pprint(table)
-	
+
 	for k, v in pairs(table) do
 		print(k, v)
 		my_mapper.bind(hash(k), v)
 		-- my_mapper.action_to_trigger[hash(k)] = v
 	end
-	
+
 	pprint(my_mapper.action_to_trigger)
 end
 
