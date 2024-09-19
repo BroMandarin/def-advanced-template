@@ -20,7 +20,8 @@ my_mapper.actions = {
 		name = "Right"
 	},
 	{
-		event = "accept",
+		-- TODO: rename
+		event = "action",
 		name = "Accept"
 	},
 	{
