@@ -1,3 +1,5 @@
+local hashes = require("core.hashes")
+
 local up_n, down_n, left_n, right_n, a_n, b_n
 
 local function get_nodes(self)
@@ -10,12 +12,12 @@ local function get_nodes(self)
 
 	-- TODO: make hash
 	self.nodes = {
-		{ up_n,    "key_up" },
-		{ down_n,  "key_down" },
-		{ left_n,  "key_left" },
-		{ right_n, "key_right" },
-		{ a_n,     "key_enter" },
-		{ b_n,     "key_z" },
+		{ up_n,    hashes.UP },
+		{ down_n,  hashes.DOWN },
+		{ left_n,  hashes.LEFT },
+		{ right_n, hashes.RIGHT },
+		{ a_n,     hashes.ACTION },
+		{ b_n,     hashes.CANCEL },
 	}
 end
 

@@ -59,7 +59,7 @@ local function process_input(self, action_id, action)
 	
 	print("@1")
 	
-	local action_id = mapper.on_input(action_id)
+	-- local action_id = mapper.on_input(action_id)
 	
 	print("@2", action_id)
 

@@ -6,6 +6,7 @@ hashes.LEFT = hash("left")
 hashes.RIGHT = hash("right")
 -- hashes.ACTION = hash("action")
 hashes.ACTION = hash("accept")
+hashes.CANCEL = hash("cancel")
 hashes.EXIT = hash("exit")
 hashes.DEBUG = hash("debug")
 
