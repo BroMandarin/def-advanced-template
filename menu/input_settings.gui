@@ -1,4 +1,4 @@
-script: "/menu/settings.gui_script"
+script: "/menu/input_settings.gui_script"
 fonts {
   name: "press_start_8"
   font: "/assets/font/press_start_8.font"
@@ -51,7 +51,20 @@ nodes {
   shadow_alpha: 0.0
 }
 nodes {
+  size {
+    x: 1.0
+    y: 1.0
+  }
+  type: TYPE_BOX
+  id: "component_1"
+  parent: "root"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+  visible: false
+}
+nodes {
   position {
+    x: -64.0
     y: -5.0
   }
   size {
@@ -59,31 +72,89 @@ nodes {
     y: 8.0
   }
   type: TYPE_TEXT
-  text: "SOUND"
+  text: "UP"
   font: "press_start_8"
   id: "element_1"
+  pivot: PIVOT_W
   shadow {
     z: 1.0
   }
-  parent: "root"
+  parent: "component_1"
   inherit_alpha: true
 }
 nodes {
   position {
-    y: -21.0
+    x: 64.0
+    y: -5.0
   }
   size {
     x: 128.0
     y: 8.0
   }
   type: TYPE_TEXT
-  text: "INPUT"
+  text: "key_up"
   font: "press_start_8"
-  id: "element_2"
+  id: "right_1"
+  pivot: PIVOT_E
   shadow {
     z: 1.0
   }
+  parent: "component_1"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    y: -16.0
+  }
+  size {
+    x: 1.0
+    y: 1.0
+  }
+  type: TYPE_BOX
+  id: "component_2"
   parent: "root"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+  visible: false
+}
+nodes {
+  position {
+    x: -64.0
+    y: -5.0
+  }
+  size {
+    x: 128.0
+    y: 8.0
+  }
+  type: TYPE_TEXT
+  text: "DOWN"
+  font: "press_start_8"
+  id: "element_2"
+  pivot: PIVOT_W
+  shadow {
+    z: 1.0
+  }
+  parent: "component_2"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 64.0
+    y: -5.0
+  }
+  size {
+    x: 128.0
+    y: 8.0
+  }
+  type: TYPE_TEXT
+  text: "key_down"
+  font: "press_start_8"
+  id: "right_2"
+  pivot: PIVOT_E
+  shadow {
+    z: 1.0
+  }
+  parent: "component_2"
   inherit_alpha: true
 }
 nodes {
