@@ -8,8 +8,8 @@ my_mapper.actions = {
 	{ event = "menu_left",   name = "Left" },
 	{ event = "menu_right",  name = "Right" },
 
-	{ event = "accept", name = "Accept" },
-	{ event = "cancel", name = "Cancel" },
+	{ event = "menu_accept", name = "Accept" },
+	{ event = "menu_cancel", name = "Cancel" },
 
 	{ event = "up",     name = "Up" },
 	{ event = "down",   name = "Down" },
