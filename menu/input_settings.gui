@@ -52,7 +52,53 @@ nodes {
 }
 nodes {
   position {
+    x: -80.0
     y: 56.0
+  }
+  size {
+    x: 128.0
+    y: 8.0
+  }
+  color {
+    x: 0.0
+    y: 0.0
+  }
+  type: TYPE_TEXT
+  text: "MENU"
+  font: "press_start_8"
+  id: "input_group_1"
+  pivot: PIVOT_N
+  shadow {
+    z: 1.0
+  }
+  parent: "root"
+  inherit_alpha: true
+  shadow_alpha: 0.0
+}
+nodes {
+  position {
+    x: 80.0
+    y: 56.0
+  }
+  size {
+    x: 128.0
+    y: 8.0
+  }
+  type: TYPE_TEXT
+  text: "GAME"
+  font: "press_start_8"
+  id: "input_group_2"
+  pivot: PIVOT_N
+  shadow {
+    z: 1.0
+  }
+  parent: "root"
+  inherit_alpha: true
+  shadow_alpha: 0.0
+}
+nodes {
+  position {
+    y: 40.0
   }
   size {
     x: 1.0
@@ -107,7 +153,7 @@ nodes {
 }
 nodes {
   position {
-    y: 48.0
+    y: 32.0
   }
   size {
     x: 1.0
@@ -162,7 +208,7 @@ nodes {
 }
 nodes {
   position {
-    y: 40.0
+    y: 24.0
   }
   size {
     x: 1.0
@@ -217,7 +263,7 @@ nodes {
 }
 nodes {
   position {
-    y: 32.0
+    y: 16.0
   }
   size {
     x: 1.0
@@ -272,7 +318,7 @@ nodes {
 }
 nodes {
   position {
-    y: 24.0
+    y: 8.0
   }
   size {
     x: 1.0
@@ -326,9 +372,6 @@ nodes {
   inherit_alpha: true
 }
 nodes {
-  position {
-    y: 16.0
-  }
   size {
     x: 1.0
     y: 1.0

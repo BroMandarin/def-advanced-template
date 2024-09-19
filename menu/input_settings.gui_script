@@ -6,19 +6,36 @@ local master = 50
 local music = 50
 local effects = 50
 
+local bindings_group_id = 1
+local bindings_groups = { "menu", "game" }
+
 local function mark_selected(self, prev_id, new_id)
 	gui.set_color(self.elements[prev_id], vmath.vector3(1, 1, 1, 1))
 	gui.set_color(self.elements[new_id], vmath.vector3(1, 0, 0, 1))
 end
 
-local function draw_bindings(self)
-	for c = 1, 6 do
-		local node = gui.get_node("right_" .. c)
-		local text = tostring(mapper.action_to_trigger[hash(mapper.actions.menu[c].event)])
-		
-		text = string.sub(text, 8, -2)
-		
-		gui.set_text(node, text)
+local function draw_action(self, id, group)
+	local node = gui.get_node("left_" .. id)
+	local name = mapper.actions[group][id].name
+
+	gui.set_text(node, name)
+end
+
+local function draw_trigger(self, id, group)
+	local node = gui.get_node("right_" .. id)
+	local event_hash = hash(mapper.actions[group][id].event)
+	local binding = mapper.action_to_trigger[event_hash]
+	local text = tostring(binding)
+
+	text = string.sub(text, 8, -2)
+
+	gui.set_text(node, text)
+end
+
+local function draw_bindings(self, group)
+	for c = 1, #mapper.actions[group] do
+		draw_action(self, c, group)
+		draw_trigger(self, c, group)
 	end
 end
 
@@ -33,7 +50,7 @@ local function show(self)
 		end
 	end
 
-	draw_bindings(self)
+	draw_bindings(self, bindings_groups[bindings_group_id])
 	self.enabled = true
 end
 
@@ -96,6 +113,29 @@ local function modify(self, amount)
 	draw_component(self)
 end
 
+local function draw_group_title(self)
+	for g = 1, 2 do
+		local node = gui.get_node("input_group_" .. g)
+
+		if bindings_group_id == g then
+			gui.set_color(node, vmath.vector3(0, 0, 1))
+		else
+			gui.set_color(node, vmath.vector3(1, 1, 1))
+		end
+	end
+end
+
+local function change_group(self, amount)
+	bindings_group_id = bindings_group_id + amount
+
+	bindings_group_id = (bindings_group_id < 1) and 1 or bindings_group_id
+	bindings_group_id = (bindings_group_id > 2) and 2 or bindings_group_id
+
+	draw_bindings(self, bindings_groups[bindings_group_id])
+
+	draw_group_title(self)
+end
+
 function init(self)
 	msg.post(".", "acquire_input_focus")
 
@@ -115,9 +155,9 @@ local function process_input(self, action_id, action)
 	elseif action_id == hashes.MENU_DOWN then
 		mark_selected(self, list_menu.select_in_direction(self.elements, 1))
 	elseif action_id == hashes.MENU_LEFT then
-		modify(self, -1)
+		change_group(self, -1)
 	elseif action_id == hashes.MENU_RIGHT then
-		modify(self, 1)
+		change_group(self, 1)
 	elseif action_id == hashes.MENU_ACCEPT then
 		choose(self, self.elements.selected_id)
 	elseif action_id == hashes.MENU_CANCEL then
