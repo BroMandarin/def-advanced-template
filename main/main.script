@@ -5,19 +5,24 @@ local hashes = require("core.hashes")
 
 function init(self)
 	msg.post("/scenes#loader", "load_menu")
-	
+
 	if dbg.enable_input_overlay then
 		msg.post("/scenes#loader", "load_input_overlay")
 	end
-	
+
+	mapper.bind(hashes.MENU_UP, triggers.KEY_UP)
+	mapper.bind(hashes.MENU_DOWN, triggers.KEY_DOWN)
+	mapper.bind(hashes.MENU_LEFT, triggers.KEY_LEFT)
+	mapper.bind(hashes.MENU_RIGHT, triggers.KEY_RIGHT)
+	mapper.bind(hashes.MENU_ACCEPT, triggers.KEY_ENTER)
+	mapper.bind(hashes.MENU_CANCEL, triggers.KEY_Z)
+
 	mapper.bind(hashes.UP, triggers.KEY_UP)
 	mapper.bind(hashes.DOWN, triggers.KEY_DOWN)
 	mapper.bind(hashes.LEFT, triggers.KEY_LEFT)
 	mapper.bind(hashes.RIGHT, triggers.KEY_RIGHT)
 	mapper.bind(hashes.ACTION, triggers.KEY_ENTER)
-	-- mapper.bind(hashes.ACCEPT, triggers.KEY_ENTER)
-	mapper.bind(hashes.CANCEL, triggers.KEY_Z)
-	
+
 	-- mapper.save_to_file()
 	-- mapper.load_from_file()
 end

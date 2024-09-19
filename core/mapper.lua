@@ -24,6 +24,7 @@ local function unbind(trigger)
 end
 
 function my_mapper.bind(action, trigger)
+	print("bind", action, trigger)
 	if my_mapper.action_to_trigger[action] then
 		unbind(my_mapper.action_to_trigger[action])
 	end
