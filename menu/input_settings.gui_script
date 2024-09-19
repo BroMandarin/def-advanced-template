@@ -16,7 +16,7 @@ local function draw_bindings(self)
 		local node = gui.get_node("right_" .. c)
 		local text = tostring(mapper.action_to_trigger[hash(mapper.actions[c].event)])
 		
-		text = string.sub(text, 6, -1)
+		text = string.sub(text, 8, -2)
 		
 		gui.set_text(node, text)
 	end
