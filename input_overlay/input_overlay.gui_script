@@ -10,7 +10,6 @@ local function get_nodes(self)
 	a_n = gui.get_node("a")
 	b_n = gui.get_node("b")
 
-	-- TODO: make hash
 	self.nodes = {
 		{ up_n,    hashes.UP },
 		{ down_n,  hashes.DOWN },
@@ -35,7 +34,7 @@ function on_input(self, action_id, action)
 
 	for n = 1, #self.nodes do
 		if gui.pick_node(self.nodes[n][1], action.x, action.y) then
-			local trigger = hash(self.nodes[n][2])
+			local trigger = self.nodes[n][2]
 
 			msg.post("main:/scenes#input", "on_input",
 				{
