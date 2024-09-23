@@ -1,10 +1,16 @@
-local loaded = nil
-local loaded_scene_name = "menu:/menu#script"
+local data = require("core.data")
+
+local menu_script = "menu:/menu#script"
+local game_script = "game:/game#script"
 
 function on_message(self, message_id, message, sender)
 	if message_id == hash("on_input") then
-		msg.post(loaded_scene_name, "on_input", message)
-	elseif message_id == hash("set_loaded") then
-		loaded = message.loaded
+		if data.cur_scene == data.SCENE_GAME then
+			msg.post(game_script, "on_input", message)
+		elseif data.cur_scene == data.SCENE_MENU then
+			msg.post(menu_script, "on_input", message)
+		elseif data.cur_scene == data.SCENE_NONE then
+			return
+		end
 	end
 end
