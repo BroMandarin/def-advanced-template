@@ -1,4 +1,4 @@
-script: "/menu/settings.gui_script"
+script: "/menu/input_settings.gui_script"
 fonts {
   name: "press_start_8"
   font: "/assets/font/press_start_8.font"
@@ -52,6 +52,68 @@ nodes {
 }
 nodes {
   position {
+    x: -80.0
+    y: 56.0
+  }
+  size {
+    x: 128.0
+    y: 8.0
+  }
+  color {
+    x: 0.0
+    y: 0.0
+  }
+  type: TYPE_TEXT
+  text: "MENU"
+  font: "press_start_8"
+  id: "input_group_1"
+  pivot: PIVOT_N
+  shadow {
+    z: 1.0
+  }
+  parent: "root"
+  inherit_alpha: true
+  shadow_alpha: 0.0
+}
+nodes {
+  position {
+    x: 80.0
+    y: 56.0
+  }
+  size {
+    x: 128.0
+    y: 8.0
+  }
+  type: TYPE_TEXT
+  text: "GAME"
+  font: "press_start_8"
+  id: "input_group_2"
+  pivot: PIVOT_N
+  shadow {
+    z: 1.0
+  }
+  parent: "root"
+  inherit_alpha: true
+  shadow_alpha: 0.0
+}
+nodes {
+  position {
+    y: 40.0
+  }
+  size {
+    x: 1.0
+    y: 1.0
+  }
+  type: TYPE_BOX
+  id: "component_1"
+  parent: "root"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+  visible: false
+}
+nodes {
+  position {
+    x: -72.0
     y: -5.0
   }
   size {
@@ -59,31 +121,306 @@ nodes {
     y: 8.0
   }
   type: TYPE_TEXT
-  text: "SOUND"
+  text: "UP"
   font: "press_start_8"
-  id: "element_1"
+  id: "left_1"
+  pivot: PIVOT_W
   shadow {
     z: 1.0
   }
-  parent: "root"
+  parent: "component_1"
   inherit_alpha: true
 }
 nodes {
   position {
-    y: -21.0
+    x: 72.0
+    y: -5.0
   }
   size {
     x: 128.0
     y: 8.0
   }
   type: TYPE_TEXT
-  text: "INPUT"
+  text: "key_up"
   font: "press_start_8"
-  id: "element_2"
+  id: "right_1"
+  pivot: PIVOT_E
   shadow {
     z: 1.0
   }
+  parent: "component_1"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    y: 32.0
+  }
+  size {
+    x: 1.0
+    y: 1.0
+  }
+  type: TYPE_BOX
+  id: "component_2"
   parent: "root"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+  visible: false
+}
+nodes {
+  position {
+    x: -72.0
+    y: -5.0
+  }
+  size {
+    x: 128.0
+    y: 8.0
+  }
+  type: TYPE_TEXT
+  text: "DOWN"
+  font: "press_start_8"
+  id: "left_2"
+  pivot: PIVOT_W
+  shadow {
+    z: 1.0
+  }
+  parent: "component_2"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 72.0
+    y: -5.0
+  }
+  size {
+    x: 128.0
+    y: 8.0
+  }
+  type: TYPE_TEXT
+  text: "key_down"
+  font: "press_start_8"
+  id: "right_2"
+  pivot: PIVOT_E
+  shadow {
+    z: 1.0
+  }
+  parent: "component_2"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    y: 24.0
+  }
+  size {
+    x: 1.0
+    y: 1.0
+  }
+  type: TYPE_BOX
+  id: "component_3"
+  parent: "root"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+  visible: false
+}
+nodes {
+  position {
+    x: -72.0
+    y: -5.0
+  }
+  size {
+    x: 128.0
+    y: 8.0
+  }
+  type: TYPE_TEXT
+  text: "LEFT"
+  font: "press_start_8"
+  id: "left_3"
+  pivot: PIVOT_W
+  shadow {
+    z: 1.0
+  }
+  parent: "component_3"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 72.0
+    y: -5.0
+  }
+  size {
+    x: 128.0
+    y: 8.0
+  }
+  type: TYPE_TEXT
+  text: "key_down"
+  font: "press_start_8"
+  id: "right_3"
+  pivot: PIVOT_E
+  shadow {
+    z: 1.0
+  }
+  parent: "component_3"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    y: 16.0
+  }
+  size {
+    x: 1.0
+    y: 1.0
+  }
+  type: TYPE_BOX
+  id: "component_4"
+  parent: "root"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+  visible: false
+}
+nodes {
+  position {
+    x: -72.0
+    y: -5.0
+  }
+  size {
+    x: 128.0
+    y: 8.0
+  }
+  type: TYPE_TEXT
+  text: "RIGHT"
+  font: "press_start_8"
+  id: "left_4"
+  pivot: PIVOT_W
+  shadow {
+    z: 1.0
+  }
+  parent: "component_4"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 72.0
+    y: -5.0
+  }
+  size {
+    x: 128.0
+    y: 8.0
+  }
+  type: TYPE_TEXT
+  text: "key_down"
+  font: "press_start_8"
+  id: "right_4"
+  pivot: PIVOT_E
+  shadow {
+    z: 1.0
+  }
+  parent: "component_4"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    y: 8.0
+  }
+  size {
+    x: 1.0
+    y: 1.0
+  }
+  type: TYPE_BOX
+  id: "component_5"
+  parent: "root"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+  visible: false
+}
+nodes {
+  position {
+    x: -72.0
+    y: -5.0
+  }
+  size {
+    x: 128.0
+    y: 8.0
+  }
+  type: TYPE_TEXT
+  text: "ACCEPT"
+  font: "press_start_8"
+  id: "left_5"
+  pivot: PIVOT_W
+  shadow {
+    z: 1.0
+  }
+  parent: "component_5"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 72.0
+    y: -5.0
+  }
+  size {
+    x: 128.0
+    y: 8.0
+  }
+  type: TYPE_TEXT
+  text: "key_down"
+  font: "press_start_8"
+  id: "right_5"
+  pivot: PIVOT_E
+  shadow {
+    z: 1.0
+  }
+  parent: "component_5"
+  inherit_alpha: true
+}
+nodes {
+  size {
+    x: 1.0
+    y: 1.0
+  }
+  type: TYPE_BOX
+  id: "component_6"
+  parent: "root"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+  visible: false
+}
+nodes {
+  position {
+    x: -72.0
+    y: -5.0
+  }
+  size {
+    x: 128.0
+    y: 8.0
+  }
+  type: TYPE_TEXT
+  text: "CANCEL"
+  font: "press_start_8"
+  id: "left_6"
+  pivot: PIVOT_W
+  shadow {
+    z: 1.0
+  }
+  parent: "component_6"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 72.0
+    y: -5.0
+  }
+  size {
+    x: 128.0
+    y: 8.0
+  }
+  type: TYPE_TEXT
+  text: "key_down"
+  font: "press_start_8"
+  id: "right_6"
+  pivot: PIVOT_E
+  shadow {
+    z: 1.0
+  }
+  parent: "component_6"
   inherit_alpha: true
 }
 nodes {
@@ -95,10 +432,29 @@ nodes {
     y: 8.0
   }
   type: TYPE_TEXT
+  text: "CONFIGURE ALL\n"
+  ""
+  font: "press_start_8"
+  id: "element_1"
+  shadow {
+    z: 1.0
+  }
+  parent: "root"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    y: -53.0
+  }
+  size {
+    x: 128.0
+    y: 8.0
+  }
+  type: TYPE_TEXT
   text: "BACK\n"
   ""
   font: "press_start_8"
-  id: "element_3"
+  id: "element_2"
   shadow {
     z: 1.0
   }

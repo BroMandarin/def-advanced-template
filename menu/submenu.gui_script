@@ -20,7 +20,7 @@ local function process_input(self, action_id, action)
 	if not self.enabled then return end
 	if not action.pressed then return end
 
-	if action_id == hashes.ACTION or action_id == hashes.CANCEL then
+	if action_id == hashes.MENU_ACCEPT or action_id == hashes.MENU_CANCEL then
 		hide(self)
 		msg.post("#menu", "show")
 		-- sound.play("main:/sound#beep")

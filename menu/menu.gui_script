@@ -61,11 +61,11 @@ local function process_input(self, action_id, action)
 	
 	print("@2", action_id)
 
-	if action_id == hashes.UP then
+	if action_id == hashes.MENU_UP then
 		mark_selected(self, list_menu.select_in_direction(self.elements, -1))
-	elseif action_id == hashes.DOWN then
+	elseif action_id == hashes.MENU_DOWN then
 		mark_selected(self, list_menu.select_in_direction(self.elements, 1))
-	elseif action_id == hashes.ACTION then
+	elseif action_id == hashes.MENU_ACCEPT then
 		choose(self, self.elements.selected_id)
 	end
 end
