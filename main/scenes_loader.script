@@ -1,3 +1,5 @@
+local data = require("core.data")
+
 local loaded = nil
 local loaded_scene_name = "menu:/menu#script"
 
@@ -24,7 +26,9 @@ function on_message(self, message_id, message, sender)
 		msg.post("/input_overlay#input_overlay_proxy", "load")
 	elseif message_id == hash("load_menu") then
 		load_scene("/scenes#menu_proxy")
+		data.cur_scene = data.SCENE_MENU
 	elseif message_id == hash("load_game") then
 		load_scene("/scenes#game_proxy")
+		data.cur_scene = data.SCENE_GAME
 	end
 end
