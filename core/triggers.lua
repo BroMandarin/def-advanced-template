@@ -179,7 +179,7 @@ local MOUSE_TRIGGERS = {}
 
 for k, v in pairs(M) do
 	if k:find("KEY_") then
-		KEY_TRIGGERS[v] = k
+		KEY_TRIGGERS[v] = true
 	elseif k:find("MOUSE_") then
 		MOUSE_TRIGGERS[v] = true
 	elseif k:find("GAMEPAD_") then

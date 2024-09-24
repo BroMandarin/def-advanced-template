@@ -139,7 +139,7 @@ local function configure_input(self, action_id, action)
 
 	local input_group = bindings_groups[bindings_group_id]
 	local action_to_bind = mapper.actions[input_group][self.configure_input_id]
-	local trigger = triggers[triggers.input_to_trigger(action_id)]
+	local trigger = action_id
 
 	print("c_i")
 	print("action:", action_to_bind)
