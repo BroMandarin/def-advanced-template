@@ -1,5 +1,18 @@
+local mapper = require("core.mapper")
+
+function init(self)
+	msg.post(".", "acquire_input_focus")
+end
+
 function on_message(self, message_id, message, sender)
 	if message_id == hash("on_input") then
 		msg.post("player#script", message_id, message)
 	end
+end
+
+function on_input(self, action_id, action)
+	local action_id = mapper.on_input(action_id, "game")
+	local message = { action_id = action_id, action = action }
+
+	msg.post("player#script", "on_input", message)
 end

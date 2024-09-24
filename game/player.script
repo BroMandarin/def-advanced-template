@@ -1,9 +1,9 @@
 local mapper = require("core.mapper")
 local hashes = require("core.hashes")
 
-function init(self)
-	msg.post(".", "acquire_input_focus")
-end
+-- function init(self)
+	-- msg.post(".", "acquire_input_focus")
+-- end
 
 local function process_input(self, action_id, action)
 	if action_id == hashes.UP then
@@ -24,12 +24,13 @@ end
 
 function on_message(self, message_id, message, sender)
 	if message_id == hash("on_input") then
+		print("ONINPUT")
 		process_input(self, message.action_id, message.action)
 	end
 end
 
-function on_input(self, action_id, action)
-	local action_id = mapper.on_input(action_id, "game")
+-- function on_input(self, action_id, action)
+	-- local action_id = mapper.on_input(action_id, "game")
 
-	process_input(self, action_id, action)
-end
+	-- process_input(self, action_id, action)
+-- end
