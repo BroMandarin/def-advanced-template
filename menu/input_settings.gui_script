@@ -1,3 +1,6 @@
+local data = require("core.data")
+local triggers = require("core.triggers")
+
 local list_menu = require("menu.list_menu")
 local hashes = require("core.hashes")
 local mapper = require("core.mapper")
@@ -61,25 +64,20 @@ local function hide(self)
 	self.elements.selected_id = 1
 end
 
-local function choose_settings(self)
-	msg.post("#settings", "show")
-	hide(self)
-end
-
-local function choose_credits(self)
-	msg.post("#credits", "show")
-	hide(self)
+local function choose_configure_all(self)
+	data.configure_input = true
+	self.configure_input_id = 1
 end
 
 local function choose_back(self)
-	hide(self)
 	msg.post("#settings", "show")
+	hide(self)
 end
 
 local function choose(self, id)
-	if id == 2 then
-		choose_settings(self)
-	elseif id == 3 then
+	if id == 1 then
+		choose_configure_all(self)
+	elseif id == 2 then
 		choose_back(self)
 	end
 end
@@ -136,6 +134,30 @@ local function change_group(self, amount)
 	draw_group_title(self)
 end
 
+local function configure_input(self, action_id, action)
+	if not action.pressed then return end
+
+	local input_group = bindings_groups[bindings_group_id]
+	local action_to_bind = mapper.actions[input_group][self.configure_input_id]
+	local trigger = triggers[triggers.input_to_trigger(action_id)]
+
+	print("c_i")
+	print("action:", action_to_bind)
+	print("trigger:", trigger)
+
+	mapper.bind(hash(action_to_bind.event), trigger, input_group)
+
+	pprint(mapper.action_to_trigger)
+
+	draw_bindings(self, input_group)
+
+	self.configure_input_id = self.configure_input_id + 1
+
+	if self.configure_input_id > #mapper.actions[input_group] then
+		data.configure_input = false
+	end
+end
+
 function init(self)
 	msg.post(".", "acquire_input_focus")
 
@@ -174,6 +196,11 @@ function on_message(self, message_id, message, sender)
 end
 
 function on_input(self, action_id, action)
+	if data.configure_input then
+		configure_input(self, action_id, action)
+		return
+	end
+
 	local action_id = mapper.on_input(action_id)
 	msg.post("#", "on_input", { action_id = action_id, action = action })
 end

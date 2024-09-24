@@ -179,11 +179,20 @@ local MOUSE_TRIGGERS = {}
 
 for k, v in pairs(M) do
 	if k:find("KEY_") then
-		KEY_TRIGGERS[v] = true
+		KEY_TRIGGERS[v] = k
 	elseif k:find("MOUSE_") then
 		MOUSE_TRIGGERS[v] = true
 	elseif k:find("GAMEPAD_") then
 		GAMEPAD_TRIGGERS[v] = true
+	end
+end
+
+function M.input_to_trigger(input)
+	print("input_to_trigger", input)
+	for k, v in pairs(KEY_TRIGGERS) do
+		if k == input then
+			return v
+		end
 	end
 end
 
