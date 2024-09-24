@@ -11,7 +11,7 @@ local function unload_loaded()
 end
 
 local function load_scene(url)
-	-- data.cur_scene = data.SCENE_NONE -- idk if this is needed
+	data.cur_scene = data.SCENE_NONE -- idk if this is needed
 	unload_loaded()
 	msg.post(url, "load")
 	loaded = url
