@@ -14,7 +14,7 @@ function init(self)
 		msg.post("/scenes#loader", "load_input_overlay")
 	end
 	
-	msg.post("scenes#game_proxy", "set_time_step", { factor = 0, mode = 1 })
+	-- msg.post("scenes#game_proxy", "set_time_step", { factor = 0, mode = 1 })
 
 	mapper.bind(hashes.MENU_UP, triggers.KEY_UP, "menu")
 	mapper.bind(hashes.MENU_DOWN, triggers.KEY_DOWN, "menu")

@@ -1,0 +1,13 @@
+local is_paused = false
+
+function on_message(self, message_id, message, sender)
+	if message_id == hash("pause") then
+		if is_paused then
+			msg.post("main:/scenes#game_proxy", "set_time_step", { factor = 1, mode = 1 })
+		else
+			msg.post("main:/scenes#game_proxy", "set_time_step", { factor = 0, mode = 1 })
+		end
+		
+		is_paused = not is_paused
+	end
+end

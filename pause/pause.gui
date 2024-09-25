@@ -1,0 +1,35 @@
+script: "/pause/pause.gui_script"
+fonts {
+  name: "press_start_8"
+  font: "/assets/font/press_start_8.font"
+}
+nodes {
+  size {
+    x: 1.0
+    y: 1.0
+  }
+  type: TYPE_BOX
+  id: "root"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+  visible: false
+}
+nodes {
+  position {
+    x: 160.0
+    y: 176.0
+  }
+  size {
+    x: 320.0
+    y: 8.0
+  }
+  type: TYPE_TEXT
+  text: "PAUSE"
+  font: "press_start_8"
+  id: "text"
+  pivot: PIVOT_N
+  parent: "root"
+  inherit_alpha: true
+}
+material: "/builtins/materials/gui.material"
+adjust_reference: ADJUST_REFERENCE_PARENT
