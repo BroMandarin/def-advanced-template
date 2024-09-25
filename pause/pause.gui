@@ -17,18 +17,70 @@ nodes {
 nodes {
   position {
     x: 160.0
-    y: 176.0
+    y: 90.0
   }
   size {
-    x: 320.0
+    x: 128.0
+    y: 64.0
+  }
+  color {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  type: TYPE_BOX
+  id: "bg"
+  parent: "root"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    y: 23.0
+  }
+  size {
+    x: 128.0
     y: 8.0
   }
   type: TYPE_TEXT
-  text: "PAUSED"
+  text: "- PAUSED -"
   font: "press_start_8"
-  id: "text"
+  id: "header"
   pivot: PIVOT_N
-  parent: "root"
+  parent: "bg"
+  inherit_alpha: true
+}
+nodes {
+  size {
+    x: 128.0
+    y: 8.0
+  }
+  color {
+    y: 0.0
+    z: 0.0
+  }
+  type: TYPE_TEXT
+  text: "RESUME"
+  font: "press_start_8"
+  id: "element_1"
+  pivot: PIVOT_N
+  parent: "bg"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    y: -16.0
+  }
+  size {
+    x: 128.0
+    y: 8.0
+  }
+  type: TYPE_TEXT
+  text: "EXIT"
+  font: "press_start_8"
+  id: "element_2"
+  pivot: PIVOT_N
+  parent: "bg"
   inherit_alpha: true
 }
 material: "/builtins/materials/gui.material"

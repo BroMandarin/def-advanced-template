@@ -19,7 +19,16 @@ function on_message(self, message_id, message, sender)
 		else
 			pause()
 		end
+	elseif message_id == hash("unpause") then
+		if is_paused then
+			unpause()
+		end
+	elseif message_id == hash("pause") then
+		if not is_paused then
+			pause()
+		end
 	elseif message_id == hash("proxy_loaded") then
 		msg.post(sender, "enable")
+		msg.post(sender, "acquire_input_focus")
 	end
 end
