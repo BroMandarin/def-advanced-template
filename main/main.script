@@ -4,11 +4,17 @@ local triggers = require("core.triggers")
 local hashes = require("core.hashes")
 
 function init(self)
-	msg.post("/scenes#loader", "load_menu")
+	if dbg.skip_menu then
+		msg.post("/scenes#loader", dbg.scene_to_load)
+	else
+		msg.post("/scenes#loader", "load_menu")
+	end
 
 	if dbg.enable_input_overlay then
 		msg.post("/scenes#loader", "load_input_overlay")
 	end
+	
+	msg.post("scenes#game_proxy", "set_time_step", { factor = 0, mode = 1 })
 
 	mapper.bind(hashes.MENU_UP, triggers.KEY_UP, "menu")
 	mapper.bind(hashes.MENU_DOWN, triggers.KEY_DOWN, "menu")

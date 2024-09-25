@@ -26,7 +26,7 @@ end
 
 local function draw_trigger(self, id, group)
 	local node = gui.get_node("right_" .. id)
-	local event_hash = hash(mapper.actions[group][id].event)
+	local event_hash = mapper.actions[group][id].event
 	local binding = mapper.action_to_trigger[event_hash]
 	local text = tostring(binding)
 
@@ -145,7 +145,7 @@ local function configure_input(self, action_id, action)
 	print("action:", action_to_bind)
 	print("trigger:", trigger)
 
-	mapper.bind(hash(action_to_bind.event), trigger, input_group)
+	mapper.bind(action_to_bind.event, trigger, input_group)
 
 	pprint(mapper.action_to_trigger)
 

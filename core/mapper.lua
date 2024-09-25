@@ -4,21 +4,21 @@ mapper.action_to_trigger = {}
 mapper.trigger_to_action = { menu = {}, game = {} }
 mapper.actions = {
 	menu = {
-		{ event = "menu_up",     name = "Up" },
-		{ event = "menu_down",   name = "Down" },
-		{ event = "menu_left",   name = "Left" },
-		{ event = "menu_right",  name = "Right" },
+		{ event = hash("menu_up"),     name = "Up" },
+		{ event = hash("menu_down"),   name = "Down" },
+		{ event = hash("menu_left"),   name = "Left" },
+		{ event = hash("menu_right"),  name = "Right" },
 
-		{ event = "menu_accept", name = "Accept" },
-		{ event = "menu_cancel", name = "Cancel" },
+		{ event = hash("menu_accept"), name = "Accept" },
+		{ event = hash("menu_cancel"), name = "Cancel" },
 	},
 	game = {
-		{ event = "up",     name = "Up" },
-		{ event = "down",   name = "Down" },
-		{ event = "left",   name = "Left" },
-		{ event = "right",  name = "Right" },
+		{ event = hash("up"),     name = "Up" },
+		{ event = hash("down"),   name = "Down" },
+		{ event = hash("left"),   name = "Left" },
+		{ event = hash("right"),  name = "Right" },
 
-		{ event = "action", name = "Action" },
+		{ event = hash("action"), name = "Action" },
 	}
 }
 
@@ -55,7 +55,7 @@ function mapper.save_to_file()
 	for k, v in ipairs(mapper.actions) do
 		print(k, v.event)
 		print(mapper.action_to_trigger[hash(v.event)])
-		table[v.event] = mapper.action_to_trigger[hash(v.event)]
+		table[hash(v.event)] = mapper.action_to_trigger[hash(v.event)]
 	end
 
 	sys.save(file, table)
@@ -74,7 +74,7 @@ function mapper.load_from_file()
 
 	for k, v in pairs(table) do
 		print(k, v)
-		mapper.bind(hash(k), v)
+		mapper.bind(k, v)
 		-- my_mapper.action_to_trigger[hash(k)] = v
 	end
 
