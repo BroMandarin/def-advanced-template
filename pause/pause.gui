@@ -24,7 +24,7 @@ nodes {
     y: 8.0
   }
   type: TYPE_TEXT
-  text: "PAUSE"
+  text: "PAUSED"
   font: "press_start_8"
   id: "text"
   pivot: PIVOT_N

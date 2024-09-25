@@ -1,13 +1,25 @@
 local is_paused = false
 
+local function pause()
+	is_paused = true
+	msg.post("main:/scenes#game_proxy", "set_time_step", { factor = 0, mode = 1 })
+	msg.post("main:/pause#pause_proxy", "load")
+end
+
+local function unpause()
+	is_paused = false
+	msg.post("main:/scenes#game_proxy", "set_time_step", { factor = 1, mode = 1 })
+	msg.post("main:/pause#pause_proxy", "unload")
+end
+
 function on_message(self, message_id, message, sender)
-	if message_id == hash("pause") then
+	if message_id == hash("toggle_pause") then
 		if is_paused then
-			msg.post("main:/scenes#game_proxy", "set_time_step", { factor = 1, mode = 1 })
+			unpause()
 		else
-			msg.post("main:/scenes#game_proxy", "set_time_step", { factor = 0, mode = 1 })
+			pause()
 		end
-		
-		is_paused = not is_paused
+	elseif message_id == hash("proxy_loaded") then
+		msg.post(sender, "enable")
 	end
 end
