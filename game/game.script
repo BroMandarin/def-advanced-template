@@ -13,6 +13,12 @@ function on_message(self, message_id, message, sender)
 end
 
 function on_input(self, action_id, action)
+	if action_id == hash("key_p") and action.pressed then
+		msg.post("main:/pause#script", "toggle_pause")
+
+		return
+	end
+
 	local action_id = mapper.on_input(action_id, "game")
 
 	message.action_id = action_id

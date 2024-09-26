@@ -1,3 +1,4 @@
+local data = require("core.data")
 local mapper = require("core.mapper")
 local hashes = require("core.hashes")
 
@@ -13,6 +14,8 @@ function init(self)
 end
 
 function update(self, dt)
+	if data.game_state == data.GAME_PAUSED then return end
+
 	local pos = go.get_position()
 
 	pos = pos + self.input * dt * 128
@@ -24,10 +27,16 @@ function update(self, dt)
 end
 
 local function process_input(self, action_id, action)
+	if data.game_state == data.GAME_PAUSED then return end
+
 	if action_id == hashes.UP then
 		self.input.y = 1
 	elseif action_id == hashes.DOWN then
 		self.input.y = -1
+	elseif action_id == hashes.LEFT then
+		self.input.x = -1
+	elseif action_id == hashes.RIGHT then
+		self.input.x = 1
 	end
 end
 
