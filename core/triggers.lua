@@ -187,6 +187,15 @@ for k, v in pairs(M) do
 	end
 end
 
+function M.input_to_trigger(input)
+	print("input_to_trigger", input)
+	for k, v in pairs(KEY_TRIGGERS) do
+		if k == input then
+			return v
+		end
+	end
+end
+
 function M.is_key(action_id)
 	if not action_id then return false end
 	return KEY_TRIGGERS[action_id] ~= nil

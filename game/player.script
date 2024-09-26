@@ -1,0 +1,54 @@
+local data = require("core.data")
+local mapper = require("core.mapper")
+local hashes = require("core.hashes")
+
+function init(self)
+	-- msg.post(".", "acquire_input_focus")
+
+	self.input = vmath.vector3()
+	
+	go.animate(".", "euler.z", go.PLAYBACK_LOOP_FORWARD, 180, go.EASING_LINEAR, 1.0, 0.0)
+	timer.delay(1.0, true, function()
+		print("timer")
+	end)
+end
+
+function update(self, dt)
+	if data.game_state == data.GAME_PAUSED then return end
+
+	local pos = go.get_position()
+
+	pos = pos + self.input * dt * 128
+
+	go.set_position(pos)
+	
+	self.input.x = 0
+	self.input.y = 0
+end
+
+local function process_input(self, action_id, action)
+	if data.game_state == data.GAME_PAUSED then return end
+
+	if action_id == hashes.UP then
+		self.input.y = 1
+	elseif action_id == hashes.DOWN then
+		self.input.y = -1
+	elseif action_id == hashes.LEFT then
+		self.input.x = -1
+	elseif action_id == hashes.RIGHT then
+		self.input.x = 1
+	end
+end
+
+function on_message(self, message_id, message, sender)
+	if message_id == hash("on_input") then
+		print("ONINPUT")
+		process_input(self, message.action_id, message.action)
+	end
+end
+
+-- function on_input(self, action_id, action)
+-- local action_id = mapper.on_input(action_id, "game")
+
+-- process_input(self, action_id, action)
+-- end

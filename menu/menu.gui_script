@@ -26,6 +26,10 @@ local function hide(self)
 	self.enabled = false
 end
 
+local function choose_start(self)
+	msg.post("main:/scenes#loader", "load_game")
+end
+
 local function choose_settings(self)
 	msg.post("#settings", "show")
 	hide(self)
@@ -37,7 +41,9 @@ local function choose_credits(self)
 end
 
 local function choose(self, id)
-	if id == 2 then
+	if id == 1 then
+		choose_start(self)
+	elseif id == 2 then
 		choose_settings(self)
 	elseif id == 3 then
 		choose_credits(self)

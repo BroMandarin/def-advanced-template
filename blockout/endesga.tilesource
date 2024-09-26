@@ -2,6 +2,12 @@ image: "/assets/png/endesga_16.png"
 tile_width: 1
 tile_height: 1
 animations {
+  id: "TEST"
+  start_tile: 1
+  end_tile: 16
+  fps: 4
+}
+animations {
   id: "blue"
   start_tile: 16
   end_tile: 16

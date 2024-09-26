@@ -20,6 +20,12 @@ embedded_instances {
   "  data: \"collection: \\\"/menu/menu.collection\\\"\\n"
   "\"\n"
   "}\n"
+  "embedded_components {\n"
+  "  id: \"game_proxy\"\n"
+  "  type: \"collectionproxy\"\n"
+  "  data: \"collection: \\\"/game/game.collection\\\"\\n"
+  "\"\n"
+  "}\n"
   ""
 }
 embedded_instances {
@@ -36,6 +42,24 @@ embedded_instances {
   "  id: \"input_overlay_proxy\"\n"
   "  type: \"collectionproxy\"\n"
   "  data: \"collection: \\\"/input_overlay/input_overlay.collection\\\"\\n"
+  "\"\n"
+  "}\n"
+  ""
+}
+embedded_instances {
+  id: "sound"
+  data: ""
+}
+embedded_instances {
+  id: "pause"
+  data: "components {\n"
+  "  id: \"script\"\n"
+  "  component: \"/pause/pause.script\"\n"
+  "}\n"
+  "embedded_components {\n"
+  "  id: \"pause_proxy\"\n"
+  "  type: \"collectionproxy\"\n"
+  "  data: \"collection: \\\"/pause/pause.collection\\\"\\n"
   "\"\n"
   "}\n"
   ""

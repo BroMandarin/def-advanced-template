@@ -98,17 +98,17 @@ local function process_input(self, action_id, action)
 	if not action.pressed then return end
 	if not self.enabled then return end
 
-	if action_id == hashes.UP then
+	if action_id == hashes.MENU_UP then
 		mark_selected(self, list_menu.select_in_direction(self.elements, -1))
-	elseif action_id == hashes.DOWN then
+	elseif action_id == hashes.MENU_DOWN then
 		mark_selected(self, list_menu.select_in_direction(self.elements, 1))
-	elseif action_id == hashes.LEFT then
+	elseif action_id == hashes.MENU_LEFT then
 		modify(self, -1)
-	elseif action_id == hashes.RIGHT then
+	elseif action_id == hashes.MENU_RIGHT then
 		modify(self, 1)
-	elseif action_id == hashes.ACTION then
+	elseif action_id == hashes.MENU_ACCEPT then
 		choose(self, self.elements.selected_id)
-	elseif action_id == hashes.CANCEL then
+	elseif action_id == hashes.MENU_CANCEL then
 		choose_back(self)
 	end
 end
