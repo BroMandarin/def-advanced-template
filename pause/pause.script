@@ -1,15 +1,21 @@
+local data = require("core.data")
+
 local is_paused = false
 
 local function pause()
 	is_paused = true
 	msg.post("main:/scenes#game_proxy", "set_time_step", { factor = 0, mode = 1 })
 	msg.post("main:/pause#pause_proxy", "load")
+	
+	data.game_state = data.GAME_PAUSED
 end
 
 local function unpause()
 	is_paused = false
 	msg.post("main:/scenes#game_proxy", "set_time_step", { factor = 1, mode = 1 })
 	msg.post("main:/pause#pause_proxy", "unload")
+	
+	data.game_state = data.GAME_NORMAL
 end
 
 function on_message(self, message_id, message, sender)
