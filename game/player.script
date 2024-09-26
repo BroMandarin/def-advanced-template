@@ -33,6 +33,10 @@ local function process_input(self, action_id, action)
 		self.input.y = 1
 	elseif action_id == hashes.DOWN then
 		self.input.y = -1
+	elseif action_id == hashes.LEFT then
+		self.input.x = -1
+	elseif action_id == hashes.RIGHT then
+		self.input.x = 1
 	end
 end
 
