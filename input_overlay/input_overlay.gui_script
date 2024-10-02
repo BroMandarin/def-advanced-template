@@ -1,0 +1,54 @@
+local hashes = require("core.hashes")
+
+local up_n, down_n, left_n, right_n, a_n, b_n
+
+local function get_nodes(self)
+	up_n = gui.get_node("up")
+	down_n = gui.get_node("down")
+	left_n = gui.get_node("left")
+	right_n = gui.get_node("right")
+	a_n = gui.get_node("a")
+	b_n = gui.get_node("b")
+
+	self.nodes = {
+		{ up_n,    hashes.UP,     hashes.MENU_UP },
+		{ down_n,  hashes.DOWN,   hashes.MENU_DOWN },
+		{ left_n,  hashes.LEFT,   hashes.MENU_LEFT },
+		{ right_n, hashes.RIGHT,  hashes.MENU_RIGHT },
+		{ a_n,     hashes.ACTION, hashes.MENU_ACCEPT },
+		{ b_n,     hashes.CANCEL, hashes.MENU_CANCEL },
+	}
+end
+
+function init(self)
+	msg.post(".", "acquire_input_focus")
+
+	gui.set_render_order(15)
+
+	get_nodes(self)
+end
+
+function on_input(self, action_id, action)
+	-- if not action.pressed then return end
+	if action_id ~= hash("touch") then return end
+
+	for n = 1, #self.nodes do
+		if gui.pick_node(self.nodes[n][1], action.x, action.y) then
+			local trigger = self.nodes[n][2]
+
+			msg.post("main:/scenes#input", "on_input",
+				{
+					action_id = trigger,
+					action = action
+				})
+
+			trigger = self.nodes[n][3]
+
+			msg.post("main:/scenes#input", "on_input",
+				{
+					action_id = trigger,
+					action = action
+				})
+		end
+	end
+end

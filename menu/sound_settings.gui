@@ -1,0 +1,180 @@
+script: "/menu/sound_settings.gui_script"
+fonts {
+  name: "press_start_8"
+  font: "/assets/font/press_start_8.font"
+}
+textures {
+  name: "menu"
+  texture: "/blockout/grids.atlas"
+}
+nodes {
+  position {
+    x: 160.0
+    y: 90.0
+  }
+  size {
+    x: 1.0
+    y: 1.0
+  }
+  type: TYPE_BOX
+  id: "root"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+  visible: false
+}
+nodes {
+  type: TYPE_BOX
+  texture: "menu/checkers"
+  id: "box"
+  parent: "root"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    y: 72.0
+  }
+  size {
+    x: 128.0
+    y: 8.0
+  }
+  type: TYPE_TEXT
+  text: "- SOUND SETTINGS -"
+  font: "press_start_8"
+  id: "header"
+  pivot: PIVOT_N
+  shadow {
+    z: 1.0
+  }
+  parent: "root"
+  inherit_alpha: true
+  shadow_alpha: 0.0
+}
+nodes {
+  size {
+    x: 1.0
+    y: 1.0
+  }
+  type: TYPE_BOX
+  id: "component_1"
+  parent: "root"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+  visible: false
+}
+nodes {
+  position {
+    x: -64.0
+    y: -5.0
+  }
+  size {
+    x: 128.0
+    y: 8.0
+  }
+  type: TYPE_TEXT
+  text: "MUSIC"
+  font: "press_start_8"
+  id: "element_1"
+  pivot: PIVOT_W
+  shadow {
+    z: 1.0
+  }
+  parent: "component_1"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 64.0
+    y: -5.0
+  }
+  size {
+    x: 128.0
+    y: 8.0
+  }
+  type: TYPE_TEXT
+  text: "50%"
+  font: "press_start_8"
+  id: "right_1"
+  pivot: PIVOT_E
+  shadow {
+    z: 1.0
+  }
+  parent: "component_1"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    y: -16.0
+  }
+  size {
+    x: 1.0
+    y: 1.0
+  }
+  type: TYPE_BOX
+  id: "component_2"
+  parent: "root"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+  visible: false
+}
+nodes {
+  position {
+    x: -64.0
+    y: -5.0
+  }
+  size {
+    x: 128.0
+    y: 8.0
+  }
+  type: TYPE_TEXT
+  text: "EFFECTS"
+  font: "press_start_8"
+  id: "element_2"
+  pivot: PIVOT_W
+  shadow {
+    z: 1.0
+  }
+  parent: "component_2"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 64.0
+    y: -5.0
+  }
+  size {
+    x: 128.0
+    y: 8.0
+  }
+  type: TYPE_TEXT
+  text: "50%"
+  font: "press_start_8"
+  id: "right_2"
+  pivot: PIVOT_E
+  shadow {
+    z: 1.0
+  }
+  parent: "component_2"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    y: -37.0
+  }
+  size {
+    x: 128.0
+    y: 8.0
+  }
+  type: TYPE_TEXT
+  text: "BACK\n"
+  ""
+  font: "press_start_8"
+  id: "element_3"
+  shadow {
+    z: 1.0
+  }
+  parent: "root"
+  inherit_alpha: true
+}
+material: "/builtins/materials/gui.material"
+adjust_reference: ADJUST_REFERENCE_PARENT

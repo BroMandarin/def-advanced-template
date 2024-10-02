@@ -1,0 +1,99 @@
+script: "/menu/menu.gui_script"
+fonts {
+  name: "press_start_8"
+  font: "/assets/font/press_start_8.font"
+}
+textures {
+  name: "grids"
+  texture: "/blockout/grids.atlas"
+}
+nodes {
+  position {
+    x: 160.0
+    y: 90.0
+  }
+  size {
+    x: 1.0
+    y: 1.0
+  }
+  type: TYPE_BOX
+  id: "root"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+  visible: false
+}
+nodes {
+  type: TYPE_BOX
+  texture: "grids/checkers"
+  id: "box"
+  parent: "root"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    y: 40.0
+  }
+  type: TYPE_BOX
+  id: "logo"
+  parent: "root"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+  visible: false
+}
+nodes {
+  position {
+    y: -5.0
+  }
+  size {
+    x: 128.0
+    y: 8.0
+  }
+  type: TYPE_TEXT
+  text: "START"
+  font: "press_start_8"
+  id: "element_1"
+  shadow {
+    z: 1.0
+  }
+  parent: "root"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    y: -21.0
+  }
+  size {
+    x: 128.0
+    y: 8.0
+  }
+  type: TYPE_TEXT
+  text: "SETTINGS"
+  font: "press_start_8"
+  id: "element_2"
+  shadow {
+    z: 1.0
+  }
+  parent: "root"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    y: -37.0
+  }
+  size {
+    x: 128.0
+    y: 8.0
+  }
+  type: TYPE_TEXT
+  text: "CREDITS"
+  font: "press_start_8"
+  id: "element_3"
+  shadow {
+    z: 1.0
+  }
+  parent: "root"
+  inherit_alpha: true
+}
+material: "/builtins/materials/gui.material"
+adjust_reference: ADJUST_REFERENCE_PARENT

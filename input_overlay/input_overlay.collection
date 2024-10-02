@@ -1,0 +1,10 @@
+name: "input_overlay"
+scale_along_z: 0
+embedded_instances {
+  id: "gui"
+  data: "components {\n"
+  "  id: \"input_overlay\"\n"
+  "  component: \"/input_overlay/input_overlay.gui\"\n"
+  "}\n"
+  ""
+}

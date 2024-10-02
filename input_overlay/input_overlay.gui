@@ -1,0 +1,143 @@
+script: "/input_overlay/input_overlay.gui_script"
+textures {
+  name: "overlay_icons"
+  texture: "/input_overlay/overlay_icons.atlas"
+}
+nodes {
+  size {
+    x: 1.0
+    y: 1.0
+  }
+  type: TYPE_BOX
+  id: "root"
+  adjust_mode: ADJUST_MODE_STRETCH
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+  visible: false
+}
+nodes {
+  position {
+    x: 48.0
+    y: 48.0
+  }
+  scale {
+    x: 0.5
+    y: 0.5
+  }
+  type: TYPE_BOX
+  texture: "overlay_icons/lineLight02"
+  id: "dpad"
+  xanchor: XANCHOR_LEFT
+  parent: "root"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    y: 64.0
+  }
+  size {
+    x: 64.0
+    y: 64.0
+  }
+  type: TYPE_BOX
+  id: "up"
+  parent: "dpad"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+  visible: false
+}
+nodes {
+  position {
+    x: 64.0
+  }
+  size {
+    x: 64.0
+    y: 64.0
+  }
+  type: TYPE_BOX
+  id: "right"
+  parent: "dpad"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+  visible: false
+}
+nodes {
+  position {
+    y: -64.0
+  }
+  size {
+    x: 64.0
+    y: 64.0
+  }
+  type: TYPE_BOX
+  id: "down"
+  parent: "dpad"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+  visible: false
+}
+nodes {
+  position {
+    x: -64.0
+  }
+  size {
+    x: 64.0
+    y: 64.0
+  }
+  type: TYPE_BOX
+  id: "left"
+  parent: "dpad"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+  visible: false
+}
+nodes {
+  position {
+    x: 264.0
+    y: 44.0
+  }
+  size {
+    x: 1.0
+    y: 1.0
+  }
+  type: TYPE_BOX
+  id: "buttons"
+  xanchor: XANCHOR_RIGHT
+  parent: "root"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+  visible: false
+}
+nodes {
+  position {
+    x: -24.0
+  }
+  scale {
+    x: 0.5
+    y: 0.5
+  }
+  type: TYPE_BOX
+  texture: "overlay_icons/lineLight35"
+  id: "b"
+  parent: "buttons"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    x: 24.0
+  }
+  scale {
+    x: 0.5
+    y: 0.5
+  }
+  type: TYPE_BOX
+  texture: "overlay_icons/lineLight34"
+  id: "a"
+  parent: "buttons"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+material: "/builtins/materials/gui.material"
+adjust_reference: ADJUST_REFERENCE_PARENT

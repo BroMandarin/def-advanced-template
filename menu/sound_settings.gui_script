@@ -1,0 +1,127 @@
+local list_menu = require("menu.list_menu")
+local hashes = require("core.hashes")
+local mapper = require("core.mapper")
+
+local master = 50
+local music = 50
+local effects = 50
+
+local function mark_selected(self, prev_id, new_id)
+	gui.set_color(self.elements[prev_id], vmath.vector3(1, 1, 1, 1))
+	gui.set_color(self.elements[new_id], vmath.vector3(1, 0, 0, 1))
+end
+
+local function show(self)
+	gui.set_enabled(self.root, true)
+
+	for e = 1, #self.elements do
+		if e == self.elements.selected_id then
+			gui.set_color(self.elements[e], vmath.vector3(1, 0, 0, 1))
+		else
+			gui.set_color(self.elements[e], vmath.vector3(1, 1, 1, 1))
+		end
+	end
+
+	self.enabled = true
+end
+
+local function hide(self)
+	gui.set_color(self.elements[self.elements.selected_id], vmath.vector3(1, 1, 1, 1))
+	gui.set_enabled(self.root, false)
+	self.enabled = false
+	self.elements.selected_id = 1
+end
+
+local function choose_settings(self)
+	msg.post("#settings", "show")
+	hide(self)
+end
+
+local function choose_credits(self)
+	msg.post("#credits", "show")
+	hide(self)
+end
+
+local function choose_back(self)
+	hide(self)
+	msg.post("#settings", "show")
+end
+
+local function choose(self, id)
+	if id == 2 then
+		choose_settings(self)
+	elseif id == 3 then
+		choose_back(self)
+	end
+end
+
+local function draw_component(self)
+	local node = gui.get_node("right_" .. self.elements.selected_id)
+
+	if self.elements.selected_id == 1 then
+		gui.set_text(node, music .. "%")
+	elseif self.elements.selected_id == 2 then
+		gui.set_text(node, effects .. "%")
+	end
+end
+
+local function modify(self, amount)
+	if self.elements.selected_id == 3 then return end
+
+	local variable = self.elements.selected_id == 1 and music or effects
+
+	variable = variable + (amount * 10)
+
+	variable = variable < 0 and 0 or variable
+	variable = variable > 100 and 100 or variable
+
+	if self.elements.selected_id == 1 then
+		music = variable
+	elseif self.elements.selected_id == 2 then
+		effects = variable
+	end
+
+	draw_component(self)
+end
+
+function init(self)
+	msg.post(".", "acquire_input_focus")
+
+	self.elements = list_menu.get_elements(3)
+	self.root = gui.get_node("root")
+	self.enabled = false
+	mark_selected(self, list_menu.select(self.elements, 1))
+	hide(self)
+end
+
+local function process_input(self, action_id, action)
+	if not action.pressed then return end
+	if not self.enabled then return end
+
+	if action_id == hashes.MENU_UP then
+		mark_selected(self, list_menu.select_in_direction(self.elements, -1))
+	elseif action_id == hashes.MENU_DOWN then
+		mark_selected(self, list_menu.select_in_direction(self.elements, 1))
+	elseif action_id == hashes.MENU_LEFT then
+		modify(self, -1)
+	elseif action_id == hashes.MENU_RIGHT then
+		modify(self, 1)
+	elseif action_id == hashes.MENU_ACCEPT then
+		choose(self, self.elements.selected_id)
+	elseif action_id == hashes.MENU_CANCEL then
+		choose_back(self)
+	end
+end
+
+function on_message(self, message_id, message, sender)
+	if message_id == hash("on_input") then
+		process_input(self, message.action_id, message.action)
+	elseif message_id == hash("show") then
+		show(self)
+	end
+end
+
+function on_input(self, action_id, action)
+	local action_id = mapper.on_input(action_id)
+	msg.post("#", "on_input", { action_id = action_id, action = action })
+end

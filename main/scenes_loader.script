@@ -1,0 +1,37 @@
+local data = require("core.data")
+
+local loaded = nil
+local loaded_scene_name = "menu:/menu#script"
+local loading_scene_id = nil
+
+local function unload_loaded()
+	if loaded then
+		msg.post(loaded, "unload")
+	end
+end
+
+local function load_scene(url)
+	data.cur_scene = data.SCENE_NONE -- idk if this is needed
+	unload_loaded()
+	msg.post(url, "load")
+	loaded = url
+	msg.post("#input", "set_loaded", { loaded = loaded })
+end
+
+function on_message(self, message_id, message, sender)
+	if message_id == hash("proxy_loaded") then
+		msg.post(sender, "enable")
+		msg.post(sender, "acquire_input_focus")
+		data.cur_scene = loading_scene_id
+	elseif message_id == hash("on_input") then
+		print(loaded)
+	elseif message_id == hash("load_input_overlay") then
+		msg.post("/input_overlay#input_overlay_proxy", "load")
+	elseif message_id == hash("load_menu") then
+		load_scene("/scenes#menu_proxy")
+		loading_scene_id = data.SCENE_MENU
+	elseif message_id == hash("load_game") then
+		load_scene("/scenes#game_proxy")
+		loading_scene_id = data.SCENE_GAME
+	end
+end

@@ -1,0 +1,32 @@
+local dbg = require("core.dbg")
+local mapper = require("core.mapper")
+local triggers = require("core.triggers")
+local hashes = require("core.hashes")
+
+function init(self)
+	if dbg.skip_menu then
+		msg.post("/scenes#loader", dbg.scene_to_load)
+	else
+		msg.post("/scenes#loader", "load_menu")
+	end
+
+	if dbg.enable_input_overlay then
+		msg.post("/scenes#loader", "load_input_overlay")
+	end
+	
+	mapper.bind(hashes.MENU_UP, triggers.KEY_UP, "menu")
+	mapper.bind(hashes.MENU_DOWN, triggers.KEY_DOWN, "menu")
+	mapper.bind(hashes.MENU_LEFT, triggers.KEY_LEFT, "menu")
+	mapper.bind(hashes.MENU_RIGHT, triggers.KEY_RIGHT, "menu")
+	mapper.bind(hashes.MENU_ACCEPT, triggers.KEY_ENTER, "menu")
+	mapper.bind(hashes.MENU_CANCEL, triggers.KEY_Z, "menu")
+
+	mapper.bind(hashes.UP, triggers.KEY_UP, "game")
+	mapper.bind(hashes.DOWN, triggers.KEY_DOWN, "game")
+	mapper.bind(hashes.LEFT, triggers.KEY_LEFT, "game")
+	mapper.bind(hashes.RIGHT, triggers.KEY_RIGHT, "game")
+	mapper.bind(hashes.ACTION, triggers.KEY_ENTER, "game")
+
+	-- mapper.save_to_file()
+	-- mapper.load_from_file()
+end

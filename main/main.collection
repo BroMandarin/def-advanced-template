@@ -1,2 +1,66 @@
 name: "main"
+instances {
+  id: "camera"
+  prototype: "/core/camera/camera.go"
+}
 scale_along_z: 0
+embedded_instances {
+  id: "scenes"
+  data: "components {\n"
+  "  id: \"loader\"\n"
+  "  component: \"/main/scenes_loader.script\"\n"
+  "}\n"
+  "components {\n"
+  "  id: \"input\"\n"
+  "  component: \"/main/scenes_input.script\"\n"
+  "}\n"
+  "embedded_components {\n"
+  "  id: \"menu_proxy\"\n"
+  "  type: \"collectionproxy\"\n"
+  "  data: \"collection: \\\"/menu/menu.collection\\\"\\n"
+  "\"\n"
+  "}\n"
+  "embedded_components {\n"
+  "  id: \"game_proxy\"\n"
+  "  type: \"collectionproxy\"\n"
+  "  data: \"collection: \\\"/game/game.collection\\\"\\n"
+  "\"\n"
+  "}\n"
+  ""
+}
+embedded_instances {
+  id: "main"
+  data: "components {\n"
+  "  id: \"main\"\n"
+  "  component: \"/main/main.script\"\n"
+  "}\n"
+  ""
+}
+embedded_instances {
+  id: "input_overlay"
+  data: "embedded_components {\n"
+  "  id: \"input_overlay_proxy\"\n"
+  "  type: \"collectionproxy\"\n"
+  "  data: \"collection: \\\"/input_overlay/input_overlay.collection\\\"\\n"
+  "\"\n"
+  "}\n"
+  ""
+}
+embedded_instances {
+  id: "sound"
+  data: ""
+}
+embedded_instances {
+  id: "pause"
+  data: "components {\n"
+  "  id: \"script\"\n"
+  "  component: \"/pause/pause.script\"\n"
+  "}\n"
+  "embedded_components {\n"
+  "  id: \"pause_proxy\"\n"
+  "  type: \"collectionproxy\"\n"
+  "  data: \"collection: \\\"/pause/pause.collection\\\"\\n"
+  "\"\n"
+  "}\n"
+  ""
+}
