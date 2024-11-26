@@ -8,9 +8,9 @@ function init(self)
 	self.input = vmath.vector3()
 	
 	go.animate(".", "euler.z", go.PLAYBACK_LOOP_FORWARD, 180, go.EASING_LINEAR, 1.0, 0.0)
-	timer.delay(1.0, true, function()
-		print("timer")
-	end)
+	-- timer.delay(1.0, true, function()
+		-- print("timer")
+	-- end)
 end
 
 function update(self, dt)
@@ -42,7 +42,7 @@ end
 
 function on_message(self, message_id, message, sender)
 	if message_id == hash("on_input") then
-		print("ONINPUT")
+		-- print("ONINPUT")
 		process_input(self, message.action_id, message.action)
 	end
 end
