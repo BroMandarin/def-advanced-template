@@ -13,7 +13,7 @@ function init(self)
 	if dbg.enable_input_overlay then
 		msg.post("/scenes#loader", "load_input_overlay")
 	end
-	
+
 	mapper.bind(hashes.MENU_UP, triggers.KEY_UP, "menu")
 	mapper.bind(hashes.MENU_DOWN, triggers.KEY_DOWN, "menu")
 	mapper.bind(hashes.MENU_LEFT, triggers.KEY_LEFT, "menu")
@@ -26,6 +26,21 @@ function init(self)
 	mapper.bind(hashes.LEFT, triggers.KEY_LEFT, "game")
 	mapper.bind(hashes.RIGHT, triggers.KEY_RIGHT, "game")
 	mapper.bind(hashes.ACTION, triggers.KEY_ENTER, "game")
+
+	-- GAMEPAD
+
+	mapper.bind(hashes.MENU_UP, triggers.GAMEPAD_LPAD_UP, "menu")
+	mapper.bind(hashes.MENU_DOWN, triggers.GAMEPAD_LPAD_DOWN, "menu")
+	mapper.bind(hashes.MENU_LEFT, triggers.GAMEPAD_LPAD_LEFT, "menu")
+	mapper.bind(hashes.MENU_RIGHT, triggers.GAMEPAD_LPAD_RIGHT, "menu")
+	mapper.bind(hashes.MENU_ACCEPT, triggers.GAMEPAD_RPAD_RIGHT, "menu")
+	mapper.bind(hashes.MENU_CANCEL, triggers.GAMEPAD_RPAD_DOWN, "menu")
+
+	mapper.bind(hashes.UP, triggers.GAMEPAD_LPAD_UP, "game")
+	mapper.bind(hashes.DOWN, triggers.GAMEPAD_LPAD_DOWN, "game")
+	mapper.bind(hashes.LEFT, triggers.GAMEPAD_LPAD_LEFT, "game")
+	mapper.bind(hashes.RIGHT, triggers.GAMEPAD_LPAD_RIGHT, "game")
+	mapper.bind(hashes.ACTION, triggers.GAMEPAD_RPAD_RIGHT, "game")
 
 	-- mapper.save_to_file()
 	-- mapper.load_from_file()
